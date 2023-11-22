@@ -13,7 +13,7 @@ create table schedule (
 
 insert into schedule (doctor_name, patient_name, gender, symptom, handphone, address, waktu, tanggal) 
 values
-	('dr. Hellen', 'Ahmad Maulana', 'male', '["headache", "stomache"]', 62838, 'address1', '08:00', '2023-10-01'),
+	('dr. Hellen', 'Atus Sendiri', 'male', '["headache", "stomache"]', 62838, 'address1', '08:00', '2023-10-01'),
 	('dr. Rafli', 'Renata Zahab', 'female', '["cough", "flu"]', 62838, 'address2', '09:00', '2022-10-02'),
 	('dr. Wibowo', 'Nunuk Reni', 'female', '["cough", "flu"]', 62838, 'address3', '10:00', '2022-10-03'),
 	('dr. Rafli', 'Bro Ulil', 'male', '["cough", "headache"]', 62838, 'address4', '11:00', '2022-10-04'),
