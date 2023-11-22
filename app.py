@@ -1,7 +1,7 @@
 import streamlit as st
 from sqlalchemy import text
 
-list_doctor = ['', 'dr. Hellen', 'dr. Yogi', 'dr. Wibowo', 'dr. Ulama', 'dr. Ping']
+list_doctor = ['', 'dr. Nurita', 'dr. Yogi', 'dr. Wibowo', 'dr. Ulama', 'dr. Ping']
 list_symptom = ['', 'male', 'female']
 
 conn = st.connection("postgresql", type="sql", 
@@ -11,7 +11,7 @@ with conn.session as session:
                                                        symptom text, handphone varchar, address text, tanggal date);')
     session.execute(query)
 
-st.header('SIMPLE HOSPITAL DATA MANAGEMENT SYS NEW')
+st.header('SIMPLE HOSPITAL DATA MANAGEMENT October')
 page = st.sidebar.selectbox("Pilih Menu", ["View Data","Edit Data"])
 
 if page == "View Data":
