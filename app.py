@@ -11,7 +11,7 @@ with conn.session as session:
                                                        symptom text, handphone varchar, address text, tanggal date);')
     session.execute(query)
 
-st.header('SIMPLE HOSPITAL DATA MANAGEMENT October')
+st.header('SIMPLE HOSPITAL DATA MANAGEMENT October-November')
 page = st.sidebar.selectbox("Pilih Menu", ["View Data","Edit Data"])
 
 if page == "View Data":
