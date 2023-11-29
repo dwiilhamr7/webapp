@@ -11,7 +11,7 @@ with conn.session as session:
                                                        symptom text, handphone varchar, address text, tanggal date);')
     session.execute(query)
 
-st.header('Reservation Drasri Mesyat Luxury Hotel')
+st.header('Reservation Drasri Beautifull Luxury Hotel')
 page = st.sidebar.selectbox("Pilih Menu", ["View Data","Edit Data"])
 
 if page == "View Data":
