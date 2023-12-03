@@ -1,7 +1,7 @@
 import streamlit as st
 from sqlalchemy import text
 
-list_room = ['', 'twin deluxe', 'double bed', 'premium intermediate', 'business premium', 'luxury class']
+list_room = ['', 'twin deluxe', 'double bed', 'premium intermediate', 'business premium', 'diamond class']
 list_gender = ['', 'male', 'female']
 
 conn = st.connection("postgresql", type="sql", 
