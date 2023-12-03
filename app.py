@@ -80,8 +80,3 @@ if page == "Edit Room":
                         session.commit()
                         st.experimental_rerun()
 
-page = st.sidebar.selectbox("Restaurant", ["Pesanan","History Pesanan"])
-
-if page == "Pesanan":
-    data = conn.query('SELECT * FROM pelanggan ORDER By id;', ttl="0").set_index('id')
-    st.dataframe(data)
