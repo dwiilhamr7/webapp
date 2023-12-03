@@ -3,6 +3,7 @@ from sqlalchemy import text
 
 list_room = ['', 'twin deluxe', 'double bed', 'premium intermediate', 'business premium', 'diamond class']
 list_gender = ['', 'male', 'female']
+list_payment = ['', 'ATM', 'Transfer', 'Tunai']
 
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
@@ -54,7 +55,7 @@ if page == "Edit Room":
             time_ci_baru = st.time_input("time_ci", time_ci_lama)
             check_out_baru = st.date_input("check_out", check_out_lama)
             time_co_baru = st.time_input("time_co", time_co_lama)
-            payment_baru = st.oneselect_input("payment", ['ATM', 'Transfer', 'Tunai'], eval(payment_lama))
+            payment_baru = st.selectbox("payment", list_payment, list_payment.index(payment_lama))
             price_baru = st.integer_input("price", price_lama)
                 
             col1, col2 = st.columns([1, 12])
