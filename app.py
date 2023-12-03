@@ -9,7 +9,7 @@ conn = st.connection("postgresql", type="sql",
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 with conn.session as session:
     query = text('CREATE TABLE IF NOT EXISTS pelanggan (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
-                                                       check_in date, time_ci date, check_out date, time_co date, payment varchar, price integer);')
+                                                       check_in date, time_ci time, check_out date, time_co time, payment text, price text);')
     session.execute(query)
 
 st.header('Reservation Drasri Beautifull Luxury Hotel')
@@ -79,3 +79,9 @@ if page == "Edit Room":
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
+
+page = st.sidebar.selectbox("Restaurant", ["Pesanan","History Pesanan"])
+
+if page == "Pesanan":
+    data = conn.query('SELECT * FROM pelanggan ORDER By id;', ttl="0").set_index('id')
+    st.dataframe(data)
