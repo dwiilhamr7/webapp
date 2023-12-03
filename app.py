@@ -76,9 +76,3 @@ if page == "Edit Room":
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
-
-page = st.sidebar.selectbox("Restaurant", ["Data Pemesanan","Pemesanan"])
-
-if page == "Data Pemesanan":
-    data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0").set_index('id')
-    st.dataframe(data)
