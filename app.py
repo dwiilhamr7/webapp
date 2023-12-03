@@ -43,7 +43,7 @@ if page == "Edit Room":
         price_lama = result["price"]
 
 
-    with st.expander(f'a.n. {contact_lama}'):
+    with st.expander(f'a.n. {nama_lama}'):
             with st.form(f'data-{id}'):
                 nama_baru = st.text_input("nama", nama_lama)
                 gender_baru = st.selectbox("gender", list_gender, list_gender.index(gender_lama))
