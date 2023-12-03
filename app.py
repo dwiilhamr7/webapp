@@ -72,7 +72,7 @@ if page == "Edit Room":
                             session.commit()
                             st.experimental_rerun()
                 
-                with col2:
+            with col2:
                     if st.form_submit_button('DELETE'):
                         query = text(f'DELETE FROM pelanggan WHERE id=:1;')
                         session.execute(query, {'1':id})
