@@ -28,18 +28,20 @@ if page == "Edit Room":
 
     data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0")
     st.write(data.columns)       
-    id = result['id']
-    customer_lama = result["customer"]
-    gender_lama = result["gender"]
-    contact_lama = result["contact"]
-    series_room_lama = result["series_room"]
-    other_needs_lama = result["other_needs"]
-    check_in_lama = result["check_in"]
-    time_ci_lama = result["time_ci"]
-    check_out_lama = result["check_out"]
-    time_co_lama = result["time_co"]
-    payment_lama = result["payment"]
-    price_lama = result["price"]
+    for _, result in data.iterrows():  # Menggunakan iterrows untuk iterasi melalui baris DataFrame
+        id = result['id']
+        customer_lama = result["customer"]
+        gender_lama = result["gender"]
+        contact_lama = result["contact"]
+        series_room_lama = result["series_room"]
+        other_needs_lama = result["other_needs"]
+        check_in_lama = result["check_in"]
+        time_ci_lama = result["time_ci"]
+        check_out_lama = result["check_out"]
+        time_co_lama = result["time_co"]
+        payment_lama = result["payment"]
+        price_lama = result["price"]
+
 
     with st.expander(f'a.n. {contact_lama}'):
             with st.form(f'data-{id}'):
