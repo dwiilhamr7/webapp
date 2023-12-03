@@ -27,7 +27,7 @@ if page == "Edit Room":
             session.commit()
 
     data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0")
-    for _, result in data.iterrows():        
+    st.write(data.columns)       
         id = result['id']
         customer_lama = result["customer"]
         gender_lama = result["gender"]
