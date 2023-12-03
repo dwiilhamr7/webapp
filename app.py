@@ -54,7 +54,7 @@ if page == "Edit Room":
                 time_ci_baru = st.time_input("time_ci", time_ci_lama)
                 check_out_baru = st.date_input("check_out", check_out_lama)
                 time_co_baru = st.time_input("time_co", time_co_lama)
-                payment_baru = st.multiselect_input("payment", ['ATM', 'Transfer', 'Tunai'], eval(payment_lama))
+                payment_baru = st.oneselect_input("payment", ['ATM', 'Transfer', 'Tunai'], eval(payment_lama))
                 price_baru = st.integer_input("price", price_lama)
                 
                 col1, col2 = st.columns([1, 12])
