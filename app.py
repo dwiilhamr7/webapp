@@ -23,7 +23,7 @@ if page == "Edit Room":
         with conn.session as session:
             query = text('INSERT INTO schedule (customer, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) \
                           VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11);')
-            session.execute(query, {'1':'', '2':'', '3':'', '4':'[]', '5':None, '6':'', '7':'', '8':'', '9':'', '10':'', '11':Rp''})
+            session.execute(query, {'1':'', '2':'', '3':'', '4':'[]', '5':None, '6':'', '7':'', '8':'', '9':'', '10':'', '11':'Rp'})
             session.commit()
 
     data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0")
