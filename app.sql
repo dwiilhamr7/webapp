@@ -1,5 +1,5 @@
-drop table if exists schedule;
-create table schedule (
+drop table if exists reservation;
+create table reservation (
 	id serial,
 	doctor_name text,
 	patient_name text,
@@ -11,7 +11,7 @@ create table schedule (
 	tanggal date
 );
 
-insert into schedule (doctor_name, patient_name, gender, symptom, handphone, address, waktu, tanggal) 
+insert into reservation (doctor_name, patient_name, gender, symptom, handphone, address, waktu, tanggal) 
 values
 	('dr. Nurita', 'Ahmad Maulana', 'male', '["headache", "stomache"]', 62838, 'address1', '08:00', '2023-10-01'),
 	('dr. Yogi', 'Renata Zahab', 'female', '["cough", "flu"]', 62838, 'address2', '09:00', '2022-10-02'),
