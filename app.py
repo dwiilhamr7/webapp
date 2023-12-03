@@ -7,7 +7,7 @@ list_gender = ['', 'male', 'female']
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS SCHEDULE (id serial, customer text, gender varchar, contact text, series_room varchar, other_needs text, \
+    query = text('CREATE TABLE IF NOT EXISTS SCHEDULE (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
                                                        check_in date, time_ci date, check_out date, time_co date, payment varchar, price integer);')
     session.execute(query)
 
@@ -21,7 +21,7 @@ if page == "View Room":
 if page == "Edit Room":
     if st.button('Tambah Data'):
         with conn.session as session:
-            query = text('INSERT INTO schedule ("customer", "gender", "contact", "series_room", "other_needs", "check_in", "time_ci", "check_out", "time_co", "payment", "price") \
+            query = text('INSERT INTO schedule ("nama", "gender", "contact", "series_room", "other_needs", "check_in", "time_ci", "check_out", "time_co", "payment", "price") \
                         VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11);')
             session.execute(query, {'1':'', '2':'', '3':'', '4':'', '5':None, '6':'', '7':'', '8':'', '9':'', '10':'', '11':'Rp'})
             session.commit()
@@ -30,7 +30,7 @@ if page == "Edit Room":
     for _, result in data.iterrows():
         st.write(result) 
         id = result['id']
-        customer_lama = result.loc["customer"]
+        nama_lama = result.loc["nama"]
         gender_lama = result["gender"]
         contact_lama = result["contact"]
         series_room_lama = result["series_room"]
@@ -45,7 +45,7 @@ if page == "Edit Room":
 
     with st.expander(f'a.n. {contact_lama}'):
             with st.form(f'data-{id}'):
-                customer_baru = st.text_input("customer", customer_lama)
+                nama_baru = st.text_input("nama", nama_lama)
                 gender_baru = st.selectbox("gender", list_gender, list_gender.index(gender_lama))
                 contact_baru = st.text_input("contact", contact_lama)
                 series_room_baru = st.selectbox("series_room", list_room, list_room.index(series_room_lama))
@@ -63,10 +63,10 @@ if page == "Edit Room":
                     if st.form_submit_button('UPDATE'):
                         with conn.session as session:
                             query = text('UPDATE schedule \
-                                          SET customer=:1, gender=:2, contact=:3, series_room=:4, other_needs=:5 \
+                                          SET nama=:1, gender=:2, contact=:3, series_room=:4, other_needs=:5 \
                                           check_in=:6, time_ci=:7, check_out=:8, time_co=:9, payment=:10, price=:11 \
                                           WHERE id=:12;')
-                            session.execute(query, {'1':customer_baru, '2':gender_baru, '3':contact_baru, '4':series_room_baru, '5':other_needs_baru, 
+                            session.execute(query, {'1':nama_baru, '2':gender_baru, '3':contact_baru, '4':series_room_baru, '5':other_needs_baru, 
                                                     '6':check_in_baru, '7':time_ci_baru, '8':check_out_baru, '9':time_co_baru, '10':payment_baru, '11':price_baru,
                                                     '12':id})
                             session.commit()
