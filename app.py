@@ -48,7 +48,7 @@ if page == "Edit Room":
             nama_baru = st.text_input("nama", nama_lama)
             gender_baru = st.selectbox("gender", list_gender, list_gender.index(gender_lama))
             contact_baru = st.text_input("contact", contact_lama)
-            series_room_baru = st.selectbox("series_room", list_room, list_room.index(series_room_lama)) 
+            series_room_baru = st.selectbox("series_room", list_room, list_room.index(series_room_lama) if series_room_lama in list_room else 0) 
             other_needs_baru = st.text_input("other_needs", other_needs_lama)
             check_in_baru = st.date_input("check_in", check_in_lama)
             time_ci_baru = st.time_input("time_ci", time_ci_lama)
