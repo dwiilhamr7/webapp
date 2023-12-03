@@ -56,7 +56,7 @@ if page == "Edit Room":
             check_out_baru = st.date_input("check_out", check_out_lama)
             time_co_baru = st.time_input("time_co", time_co_lama)
             payment_baru = st.selectbox("payment", list_payment, list_payment.index(payment_lama))
-            price_baru = st.integer_input("price", price_lama)
+            price_baru = st.text_input("price", price_lama)
                 
             col1, col2 = st.columns([1, 12])
 
