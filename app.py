@@ -27,7 +27,7 @@ if page == "Edit Room":
             session.commit()
 
     data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0")
-    st.write(data.columns)       
+    st.write(data.columns)   
     for _, result in data.iterrows():  # Menggunakan iterrows untuk iterasi melalui baris DataFrame
         id = result['id']
         customer_lama = result["customer"]
