@@ -12,13 +12,13 @@ with conn.session as session:
     session.execute(query)
 
 st.header('Reservation Drasri Beautifull Luxury Hotel')
-page = st.sidebar.selectbox("Hotel Room", ["Edit Room","View Room"])
+page = st.sidebar.selectbox("Hotel Room", ["View Room","Edit Room"])
 
-if page == "Edit Room":
+if page == "View Room":
     data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0").set_index('id')
     st.dataframe(data)
 
-if page == "View Room":
+if page == "Edit Room":
     if st.button('Tambah Data'):
         with conn.session as session:
             query = text('INSERT INTO schedule (doctor_name, patient_name, gender, symptom, handphone, address, waktu, tanggal) \
@@ -70,4 +70,4 @@ if page == "View Room":
                         session.commit()
                         st.experimental_rerun()
 
-page = st.sidebar.selectbox("Restaurant", ["Pemesanan","Data Pemesanan"])
+page = st.sidebar.selectbox("Restaurant", ["Data Pemesanan","Pemesanan"])
