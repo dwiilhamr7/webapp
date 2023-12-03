@@ -30,7 +30,7 @@ if page == "Edit Room":
     for _, result in data.iterrows():
         st.write(result) 
         id = result['id']
-        customer_lama = result["customer"]
+        customer_lama = result.loc["customer"]
         gender_lama = result["gender"]
         contact_lama = result["contact"]
         series_room_lama = result["series_room"]
