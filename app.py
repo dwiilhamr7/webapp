@@ -57,7 +57,7 @@ if page == "Edit Room":
                 payment_baru = st.multiselect_input("payment", ['ATM', 'Transfer', 'Tunai'], eval(payment_lama))
                 price_baru = st.integer_input("price", price_lama)
                 
-                col1, col2 = st.columns([1, 6])
+                col1, col2 = st.columns([1, 12])
 
                 with col1:
                     if st.form_submit_button('UPDATE'):
