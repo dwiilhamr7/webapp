@@ -7,7 +7,7 @@ list_gender = ['', 'male', 'female']
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS SCHEDULE (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
+    query = text('CREATE TABLE IF NOT EXISTS pelanggan (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
                                                        check_in date, time_ci date, check_out date, time_co date, payment varchar, price integer);')
     session.execute(query)
 
@@ -15,18 +15,18 @@ st.header('Reservation Drasri Beautifull Luxury Hotel')
 page = st.sidebar.selectbox("Hotel Room", ["View Room","Edit Room"])
 
 if page == "View Room":
-    data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0").set_index('id')
+    data = conn.query('SELECT * FROM pelanggan ORDER By id;', ttl="0").set_index('id')
     st.dataframe(data)
 
 if page == "Edit Room":
     if st.button('Tambah Data'):
         with conn.session as session:
-            query = text('INSERT INTO schedule ("nama", "gender", "contact", "series_room", "other_needs", "check_in", "time_ci", "check_out", "time_co", "payment", "price") \
+            query = text('INSERT INTO pelanggan ("nama", "gender", "contact", "series_room", "other_needs", "check_in", "time_ci", "check_out", "time_co", "payment", "price") \
                         VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11);')
             session.execute(query, {'1':'', '2':'', '3':'', '4':'', '5':None, '6':'', '7':'', '8':'', '9':'', '10':'', '11':'Rp'})
             session.commit()
 
-    data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0")
+    data = conn.query('SELECT * FROM pelanggan ORDER By id;', ttl="0")
     for _, result in data.iterrows():
         st.write(result) 
         id = result['id']
@@ -62,7 +62,7 @@ if page == "Edit Room":
                 with col1:
                     if st.form_submit_button('UPDATE'):
                         with conn.session as session:
-                            query = text('UPDATE schedule \
+                            query = text('UPDATE pelanggan \
                                           SET nama=:1, gender=:2, contact=:3, series_room=:4, other_needs=:5 \
                                           check_in=:6, time_ci=:7, check_out=:8, time_co=:9, payment=:10, price=:11 \
                                           WHERE id=:12;')
@@ -74,7 +74,7 @@ if page == "Edit Room":
                 
                 with col2:
                     if st.form_submit_button('DELETE'):
-                        query = text(f'DELETE FROM schedule WHERE id=:1;')
+                        query = text(f'DELETE FROM pelanggan WHERE id=:1;')
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
