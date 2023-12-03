@@ -64,8 +64,8 @@ if page == "Edit Room":
                                           SET customer=:1, gender=:2, contact=:3, series_room=:4, other_needs=:5 \
                                           check_in=:6, time_ci=:7, check_out=:8, time_co=:9, payment=:10, price=:11 \
                                           WHERE id=:12;')
-                            session.execute(query, {'1':customer_baru, '2':gender_baru, '3':contact_baru, '4':series_room_baru, '5':other_needs_baru 
-                                                    '6':check_in_baru, '7':time_ci_baru, '8':check_out_baru, '9':time_co_baru, '10':payment_baru, '11':price_baru 
+                            session.execute(query, {'1':customer_baru, '2':gender_baru, '3':contact_baru, '4':series_room_baru, '5':other_needs_baru, 
+                                                    '6':check_in_baru, '7':time_ci_baru, '8':check_out_baru, '9':time_co_baru, '10':payment_baru, '11':price_baru,
                                                     '12':id})
                             session.commit()
                             st.experimental_rerun()
