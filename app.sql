@@ -16,6 +16,6 @@ create table schedule (
 
 insert into schedule (customer, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) 
 values
-	('dr. Nurita', 'male', '["twin deluxe"]', 'water', '13:00', '2023-10-01', '08:00', '2023-10-02', 'cashless', 'Rp. 280.000'),
-	('Aldenia Boo', 'female', '["luxury class"]', 'water & sandals', '14:00', '2023-10-02', '08:00', '2023-10-04', 'cashless', 'Rp. 1.050.000')
+	('dr. Nurita', 'male', '["twin deluxe"]', 'water', '13:00', '2023-10-01', '08:00', '2023-10-02', 'Tunai', 'Rp. 280.000'),
+	('Aldenia Boo', 'female', '["luxury class"]', 'water & sandals', '14:00', '2023-10-02', '08:00', '2023-10-04', 'Transfer', 'Rp. 1.050.000')
 	;
