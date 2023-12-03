@@ -58,7 +58,7 @@ if page == "Edit Room":
             payment_baru = st.selectbox("payment", list_payment, list_payment.index(payment_lama))
             price_baru = st.text_input("price", price_lama)
                 
-            col1, col2 = st.columns([1, 12])
+            col1, col2 = st.columns([1, 6])
 
             with col1:
                     if st.form_submit_button('UPDATE'):
