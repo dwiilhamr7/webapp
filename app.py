@@ -8,7 +8,8 @@ list_payment = ['', 'ATM', 'Transfer', 'Tunai']
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 
-home = st.header('Favorit Hotel in Jawa Timur')
+home = st.title('Favorit Hotel in Jawa Timur')
+describe = st.writer('Drasri Beautifull Luxury Hotel')
 
 with conn.session as session:
     query = text('CREATE TABLE IF NOT EXISTS pelanggan (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
