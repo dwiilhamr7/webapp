@@ -1,21 +1,21 @@
-drop table if exists schedule;
-create table schedule (
-	id serial,
-	customer text,
-	gender text,
-	contact text,
-	series_room text,
-	other_needs text,
-	check_in text,
-	time_ci text,
-	check_out text,
-	time_co text,
-	payment time,
-	price date
+DROP TABLE IF EXISTS schedule;
+
+CREATE TABLE schedule (
+    id serial,
+    customer text,
+    gender text,
+    contact text,
+    series_room text[],  -- Menggunakan tipe array untuk series_room
+    other_needs text,
+    check_in text,
+    time_ci text,
+    check_out text,
+    time_co text,
+    payment text,  -- Menggunakan tipe data text untuk payment
+    price numeric  -- Menggunakan tipe data numeric untuk price
 );
 
-insert into schedule (customer, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) 
-values
-	('dr. Nurita', 'male', '0812121', '["twin deluxe"]', 'water', '13:00', '2023-10-01', '08:00', '2023-10-02', 'Tunai', 'Rp. 280.000'),
-	('Aldenia Boo', 'female', '0812122018', '["luxury class"]', 'water & sandals', '14:00', '2023-10-02', '08:00', '2023-10-04', 'Transfer', 'Rp. 1.050.000')
-	;
+INSERT INTO schedule (customer, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) 
+VALUES
+    ('dr. Nurita', 'male', '0812121', ARRAY['twin deluxe'], 'water', '2023-10-01', '13:00', '2023-10-02', '08:00', 'Tunai', 280000),
+    ('Aldenia Boo', 'female', '0812122018', ARRAY['luxury class'], 'water & sandals', '2023-10-02', '14:00', '2023-10-04', '08:00', 'Transfer', 1050000);
