@@ -12,7 +12,7 @@ with conn.session as session:
     session.execute(query)
 
 st.header('Reservation Drasri Beautifull Luxury Hotel')
-page_awal = st.sidebar.selectbox("Pilih Menu", ["View Room","Edit Room"])
+page1 = st.sidebar.selectbox("Pilih Menu", ["View Room","Edit Room"])
 
 if page == "View Room":
     data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0").set_index('id')
@@ -70,7 +70,7 @@ if page == "Edit Room":
                         session.commit()
                         st.experimental_rerun()
 
-page_akhir = st.sidebar.selectbox("Pilih Menu", ["Edit Restaurant","View Restaurant"])
+page2 = st.sidebar.selectbox("Pilih Menu", ["Edit Restaurant","View Restaurant"])
 
 if page == "Edit Restaurant":
     data = conn.query('SELECT * FROM schedule ORDER By id;', ttl="0").set_index('id')
