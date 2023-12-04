@@ -9,7 +9,7 @@ conn = st.connection("postgresql", type="sql",
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 
 def main_home():
-    st.title('Favorit Hotel in Jawa Timur')
+    st.title('DATABASE INTERNAL')
     st.header('Drasri Beautiful Luxury Hotel')
     
     # Add an image of the hotel
@@ -17,20 +17,17 @@ def main_home():
     st.image(image_path, caption='Drasri Beautiful Luxury Hotel', use_column_width=True)
 
     # Add any content for the main home page
-    st.write("Welcome to Drasri Beautiful Luxury Hotel! Experience the epitome of comfort and luxury in the heart of Jawa Timur.")
+    st.write("Selamat Data di Database Drasri Beautiful Luxury Hotel! Penyimpanan dan Visualisasi Data Internal Staff.")
 
     # You can add more content, sections, or styling here as needed
     st.markdown("---")  # Add a horizontal line for separation
 
-    # Example: Add a section with styled text
-    st.header("Our Services")
-    st.write("Discover our exclusive services designed to make your stay memorable.")
-
     # Example: Add bullet points
-    st.subheader("Services Include:")
-    st.markdown("- Room service")
-    st.markdown("- Spa and wellness facilities")
-    st.markdown("- Concierge service")
+    st.subheader("Pelayanan:")
+    st.markdown("- Penyimpanan Data Hotel")
+    st.markdown("- Penyimpanan Data Restaurant")
+    st.markdown("- Penambahan Data")
+    st.markdown("- Visualisasi Data")
     
 def sub_home():
     st.header('Reservation Drasri Beautiful Luxury Hotel')
