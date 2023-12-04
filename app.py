@@ -90,7 +90,7 @@ def sub_home():
                             session.commit()
                             st.experimental_rerun()
 
-if st.sidebar.checkbox("Show Home"):
-    main_home()
-elif st.sidebar.checkbox("Show Sub Home"):
+if st.sidebar.checkbox("Show Sub Home"):
     sub_home()
+elif st.sidebar.checkbox("Show Home"):
+    main_home()
