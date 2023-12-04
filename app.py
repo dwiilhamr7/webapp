@@ -93,3 +93,8 @@ def room_hotel():
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
+
+if st.sidebar.checkbox("Room Hotel"):
+    room_hotel()
+else:
+    home()
