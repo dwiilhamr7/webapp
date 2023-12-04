@@ -3,7 +3,7 @@ from sqlalchemy import text
 
 list_room = ['', 'Twin Deluxe', 'Double Bed', 'Premium Business', 'Family Class', 'Business VVIP']
 list_gender = ['', 'male', 'female']
-list_payment
+list_payment = ['', 'Tunai', 'ATM', 'Transfer']
 
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
@@ -42,7 +42,7 @@ if page == "Edit Data":
         payment_lama = result["payment"]
         price_lama = result["price"]
 
-        with st.expander(f'a.n. {patient_name_lama}'):
+        with st.expander(f'a.n. {nama_lama}'):
             with st.form(f'data-{id}'):
                 nama_baru = st.text_input("nama", nama_lama)
                 gender_baru = st.selectbox("gender", list_gender, list_gender.index(gender_lama))
@@ -66,7 +66,7 @@ if page == "Edit Data":
                                           check_in=:6, time_ci=:7, check_out=:8, time_co=:9, paymen=:10, price=:11, \
                                           WHERE id=:12;')
                             session.execute(query, {'1':nama_baru, '2':gender_baru, '3':contact_baru, '4':str(series_room_baru), '5':other_needs_baru,
-                                                    '6':check_in_baru, '7':time_ci_baru, '8':check_out_baru, '9':time_co_baru, '10':payment_baru, '11':price, '12':id})
+                                                    '6':check_in_baru, '7':time_ci_baru, '8':check_out_baru, '9':time_co_baru, '10':payment_baru, '11':price_baru, '12':id})
                             session.commit()
                             st.experimental_rerun()
                 
