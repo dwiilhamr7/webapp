@@ -66,7 +66,7 @@ def room_hotel():
             contact_baru = st.text_input("contact", contact_lama)
             series_room_baru = st.selectbox("series_room", list_room, list_room.index(series_room_lama) if series_room_lama in list_room else 0) 
             other_needs_baru = st.text_input("other_needs", other_needs_lama)
-            check_in_baru = st.text_input("check_in", check_in_lama)
+            check_in_baru = st.date_input("check_in", check_in_lama)
             time_ci_baru = st.time_input("time_ci", time_ci_lama)
             check_out_baru = st.date_input("check_out", check_out_lama)
             time_co_baru = st.time_input("time_co", time_co_lama)
