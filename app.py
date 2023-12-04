@@ -168,8 +168,9 @@ def sub_home_restaurant():
                         st.experimental_rerun()
 
 # Choose whether to show the main home or sub-home based on user selection
-if st.sidebar.checkbox("Menu Database"):
+if st.sidebar.checkbox("Room Hotel"):
     sub_home_room()
+if st.sidebar.checkbox("Restaurant"):
     sub_home_restaurant()
 else:
     main_home()
