@@ -116,7 +116,7 @@ def restaurant_hotel():
     for _, result in data.iterrows():
         st.write(result) 
         id = result['id']
-        nama_lama1 = result["nama"]
+        nama_lama1 = result.loc["nama"]
         makanan_lama = result["makanan"]
         jumlah_makanan_lama = result["jumlah_makanan"]
         minuman_lama = result["minuman"]
