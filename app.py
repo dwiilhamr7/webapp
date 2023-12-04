@@ -30,7 +30,7 @@ if page == "Edit Room":
     if st.button('Tambah Data'):
         with conn.session as session:
             query = text('INSERT INTO pelanggan ("nama", "gender", "contact", "series_room", "other_needs", "check_in", "time_ci", "check_out", "time_co", "payment", "price") \
-                        VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11);')
+                         VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, ARRAY[:11]);')
             session.execute(query, {'1':'', '2':'', '3':'', '4':'', '5':None, '6':None, '7':'', '8':None, '9':'', '10':'', '11':['Rp']})
             session.commit()
 
