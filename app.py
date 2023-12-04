@@ -101,13 +101,13 @@ def sub_home_room():
 def sub_home_restaurant():
     st.header('Reservation Drasri Beautiful Luxury Hotel')
     
-    page = st.sidebar.selectbox("Hotel Room", ["View Room","Edit Room"])
+    page = st.sidebar.selectbox("Restaurans", ["View Pelanggan","Reservation"])
 
-    if page == "View Room":
+    if page == "View Pelanggan":
         data = conn.query('SELECT * FROM pelanggan ORDER By id;', ttl="0").set_index('id')
         st.dataframe(data)
 
-    elif page == "Edit Room":
+    elif page == "Reservation":
         if st.button('Tambah Data'):
             with conn.session as session:
                 query = text('INSERT INTO pelanggan ("nama", "gender", "contact", "series_room", "other_needs", "check_in", "time_ci", "check_out", "time_co", "payment", "price") \
