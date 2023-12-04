@@ -7,10 +7,10 @@ CREATE TABLE hotel_room (
     contact text,
     series_room text[],  -- Menggunakan tipe array untuk series_room
     other_needs text,
-    check_in text,
-    time_ci text,
-    check_out text,
-    time_co text,
+    check_in date,
+    time_ci time,
+    check_out date,
+    time_co time,
     payment text,  -- Menggunakan tipe data text untuk payment
     price text  -- Menggunakan tipe data numeric untuk price
 );
