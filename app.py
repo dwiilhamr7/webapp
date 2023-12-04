@@ -39,36 +39,37 @@ if page == "View Data":
     st.table(dummy_data)
 
 if page == "Edit Data":
-    st.subheader('Form Reservasi')
-    total_harga = 0  # Inisialisasi total harga
+    if st.button('Tambah Data')
+        st.subheader('Form Reservasi')
+        total_harga = 0  # Inisialisasi total harga
 
-    for _, row in data_reservasi.iterrows():
-        pertanyaan = row['Pertanyaan']
-        tipe_data = row['Type']
+        for _, row in data_reservasi.iterrows():
+            pertanyaan = row['Pertanyaan']
+            tipe_data = row['Type']
 
-        if tipe_data == 'text':
-            jawaban = st.text_input(pertanyaan, key=f"{pertanyaan.strip(':')}_input")
-        elif tipe_data == 'integer':
-            jawaban = st.number_input(pertanyaan, key=f"{pertanyaan.strip(':')}_input")
-        elif tipe_data == 'chose multiple':
-            pilihan = row['Harga'].keys()  # Mengambil pilihan dari kolom Harga
-            jawaban = st.multiselect(pertanyaan, pilihan, key=f"{pertanyaan.strip(':')}_input")
-        elif tipe_data == 'chose bersyarat':
-            pilihan = ['Cash', 'Debit']  # Ganti dengan pilihan yang sesuai
-            jawaban = st.selectbox(pertanyaan, pilihan, key=f"{pertanyaan.strip(':')}_input")
+            if tipe_data == 'text':
+                jawaban = st.text_input(pertanyaan, key=f"{pertanyaan.strip(':')}_input")
+            elif tipe_data == 'integer':
+                jawaban = st.number_input(pertanyaan, key=f"{pertanyaan.strip(':')}_input")
+            elif tipe_data == 'chose multiple':
+                pilihan = row['Harga'].keys()  # Mengambil pilihan dari kolom Harga
+                jawaban = st.multiselect(pertanyaan, pilihan, key=f"{pertanyaan.strip(':')}_input")
+            elif tipe_data == 'chose bersyarat':
+                pilihan = ['Cash', 'Debit']  # Ganti dengan pilihan yang sesuai
+                jawaban = st.selectbox(pertanyaan, pilihan, key=f"{pertanyaan.strip(':')}_input")
 
-        # Update nilai di dalam data
-        data_reservasi.at[_, 'Value'] = jawaban
+            # Update nilai di dalam data
+            data_reservasi.at[_, 'Value'] = jawaban
 
-        # Hitung total harga makanan dan minuman
-        if pertanyaan == 'Makan:':
-            total_harga += sum([row['Harga'][makanan] for makanan in jawaban])
-        elif pertanyaan == 'Minum:':
-            total_harga += sum([row['Harga'][minuman] for minuman in jawaban])
+            # Hitung total harga makanan dan minuman
+            if pertanyaan == 'Makan:':
+                total_harga += sum([row['Harga'][makanan] for makanan in jawaban])
+            elif pertanyaan == 'Minum:':
+                total_harga += sum([row['Harga'][minuman] for minuman in jawaban])
 
-    # Menampilkan total harga
-    st.write(f"Total Harga: {total_harga}")
+        # Menampilkan total harga
+        st.write(f"Total Harga: {total_harga}")
 
-    # Tombol untuk menyimpan data reservasi
-    if st.button('Reservasi'):
-        st.success('Data reservasi berhasil disimpan!')
+        # Tombol untuk menyimpan data reservasi
+        if st.button('Reservasi'):
+            st.success('Data reservasi berhasil disimpan!')
