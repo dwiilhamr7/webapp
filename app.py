@@ -13,7 +13,7 @@ def main_home():
     st.header('Drasri Beautiful Luxury Hotel')
     
     # Add an image of the hotel
-    image_path = "https://www.bing.com/images/search?view=detailV2&ccid=SwYGU14Q&id=3DB12D6B79C420AEF8693C26814AA34C9EED7AD2&thid=OIP.SwYGU14Q4VS3nKTZWAHASgHaEK&mediaurl=https%3a%2f%2fwww.theluxevoyager.com%2fwp-content%2fuploads%2f2018%2f02%2fFour-Seasons-Hotel-Jakarta-pool.jpg&exph=901&expw=1600&q=gambar+hotel&simid=608043614509011076&FORM=IRPRST&ck=28478F7D80F2F4074C9649AAE76A3FD6&selectedIndex=2&itb=0"  # Replace with the actual path or URL
+    image_path = "https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg"
     st.image(image_path, caption='Drasri Beautiful Luxury Hotel', use_column_width=True)
 
     # Add any content for the main home page
@@ -31,7 +31,7 @@ def main_home():
     st.markdown("- Room service")
     st.markdown("- Spa and wellness facilities")
     st.markdown("- Concierge service")
-
+    
 def sub_home():
     st.header('Reservation Drasri Beautiful Luxury Hotel')
     
