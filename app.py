@@ -8,8 +8,8 @@ list_payment = ['', 'Tunai', 'ATM', 'Transfer']
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS pelanggan (id serial, doctor_name varchar, patient_name varchar, gender char(25), \
-                                                       symptom text, handphone varchar, address text, tanggal date);')
+    query = text('CREATE TABLE IF NOT EXISTS pelanggan (id serial, nama varchar, gender char(25), contact text, series_room varchar, other_needs text, \
+                                                       check_in text, time_ci text, check_out text, time_co text, payment text, price text);')
     session.execute(query)
 
 st.header('Diamond Tower Hotel')
