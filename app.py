@@ -4,6 +4,7 @@ from sqlalchemy import text
 list_room = ['', 'twin deluxe', 'double bed', 'premium intermediate', 'business premium', 'diamond class']
 list_gender = ['', 'male', 'female']
 list_payment = ['', 'ATM', 'Transfer', 'Tunai']
+list_metode = ['','Diantar', 'Ditunggu']
 
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
@@ -94,7 +95,74 @@ def room_hotel():
                         session.commit()
                         st.experimental_rerun()
 
+def restaurant_hotel():
+    st.header('Reservation Restaurant Diamond Luxury Tower Hotel')
+
+    page = st.sidebar.selectbox("Restaurant Hotel", ['View Data Restaurant', 'Additing Data Restaurant'])
+
+    if page == "View Data Restaurant":
+        data = conn.query('Select * FROM hotel_restaurant ORDER BY id;', ttl="0").set_index('id')
+        st.dataframe(data)
+    
+    if page == "Additing Data Restaurant":
+        if st.button('Tambah Data'):
+            with conn.session as session:
+                query = text('INSERT INTO hotel_restaurant ("nama", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
+                        VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9);')
+                session.execute(query, {'1':'', '2':'', '3':None, '4':'', '5':None, '6':'', '7':'', '8':['Rp'], '9':''})
+                session.commit()
+        
+    data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0")
+    for _, result in data.iterrows():
+        st.write(result) 
+        id = result['id']
+        nama_lama1 = result["nama"]
+        makanan_lama = result["makanan"]
+        jumlah_makanan_lama = result["jumlah_makanan"]
+        minuman_lama = result["minuman"]
+        jumlah_minuman_lama = result["jumlah_minuman"]
+        metode_lama = result["metode"]
+        no_tempat_lama = result["no_tempat"]
+        total_harga_lama = result["total_harga"]
+        pembayaran_lama = result["pembayaran"]
+
+    with st.expander(f'a.n. {nama_lama1}'):
+        with st.form(f'data-{id}'):
+            nama_baru1 = st.text_input("nama", nama_lama1)
+            makanan_baru = st.text_input("makanan", makanan_lama)
+            jumlah_makanan_baru = st.text_input("jumlah_makanan", jumlah_makanan_lama)
+            minuman_baru = st.text_input("minuman", minuman_lama) 
+            jumlah_minuman_baru = st.text_input("jumlah_minuman", jumlah_minuman_lama)
+            metode_baru = st.selectbox("metode", list_metode, list_metode.index(metode_lama))
+            no_tempat_baru = st.text_input("no_tempat", no_tempat_lama)
+            total_harga_baru = st.date_input("total_harga", total_harga_lama)
+            pembayaran_baru = st.selectbox("pembayaran", list_payment, list_payment.index(pembayaran_lama))
+                
+            col1, col2 = st.columns([1, 6])
+
+            with col1:
+                    if st.form_submit_button('UPDATE'):
+                        with conn.session as session:
+                            query = text('UPDATE hotel_restaurant \
+                                          SET nama=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
+                                          metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, \
+                                          WHERE id=:10;')
+                            session.execute(query, {'1':nama_baru1, '2':makanan_baru, '3':jumlah_makanan_baru, '4':minuman_baru, '5':jumlah_minuman_baru, 
+                                                    '6':metode_baru, '7':no_tempat_baru, '8':total_harga_baru, '9':pembayaran_baru, 
+                                                    '10':id})
+                            session.commit()
+                            st.experimental_rerun()
+
+            with col2:
+                    if st.form_submit_button('DELETE'):
+                        query = text(f'DELETE FROM hotel_restaurant WHERE id=:1;')
+                        session.execute(query, {'1':id})
+                        session.commit()
+                        st.experimental_rerun()
+
 if st.sidebar.checkbox("Room Hotel"):
     room_hotel()
+if st.sidebar.checkbox("Restaurant Hotel"):
+    restaurant_hotel()
 else:
     home()
