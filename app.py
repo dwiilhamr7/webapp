@@ -8,6 +8,7 @@ list_payment = ['', 'ATM', 'Transfer', 'Tunai']
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 
+
 def main_home():
     st.title('Diamond Tower Hotel')
     st.header('Experience the Epitome of Comfort and Luxury in Jawa Timur')
@@ -18,11 +19,11 @@ def main_home():
 
     st.write("Welcome to Diamond Tower Hotel! Discover exclusive services and make your stay memorable.")
 
-def Hotel Room():
-with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS pelanggan (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
+def hotel_room():
+    with conn.session as session:
+        query = text('CREATE TABLE IF NOT EXISTS pelanggan (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
                                                        check_in date, time_ci time, check_out date, time_co time, payment text, price text);')
-    session.execute(query)
+        session.execute(query)
 
     st.header('Reservation Diamond Tower Hotel')
     page = st.sidebar.selectbox("Hotel Room", ["View Room","Edit Room"])
@@ -163,4 +164,4 @@ def Restaurant():
 if st.sidebar.checkbox("Show Home"):
     main_home()
 elif st.sidebar.checkbox("Show Sub Home"):
-    sub_home()
+    hotel_room()
