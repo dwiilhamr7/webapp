@@ -99,7 +99,7 @@ def sub_home():
                         st.experimental_rerun()
 
 # Choose whether to show the main home or sub-home based on user selection
-if st.sidebar.checkbox("Show Sub Home"):
+if st.sidebar.checkbox("Menu Database"):
     sub_home()
 else:
     main_home()
