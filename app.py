@@ -66,7 +66,7 @@ def room_hotel():
             contact_baru = st.text_input("contact", contact_lama)
             series_room_baru = st.selectbox("series_room", list_room, list_room.index(series_room_lama) if series_room_lama in list_room else 0) 
             other_needs_baru = st.text_input("other_needs", other_needs_lama)
-            check_in_baru = st.date_input("check_in", check_in_lama if isinstance(check_in_lama, (date, datetime)) else None)
+            check_in_baru = st.text_input("check_in", check_in_lama)
             time_ci_baru = st.time_input("time_ci", time_ci_lama)
             check_out_baru = st.date_input("check_out", check_out_lama)
             time_co_baru = st.time_input("time_co", time_co_lama)
@@ -135,7 +135,7 @@ def restaurant_hotel():
             jumlah_minuman_baru = st.text_input("jumlah_minuman", jumlah_minuman_lama)
             metode_baru = st.selectbox("metode", list_metode, list_metode.index(metode_lama))
             no_tempat_baru = st.text_input("no_tempat", no_tempat_lama)
-            total_harga_baru = st.date_input("total_harga", total_harga_lama if isinstance(total_harga_lama, (date, datetime)) else None)
+            total_harga_baru = st.date_input("total_harga", total_harga_lama)
             pembayaran_baru = st.selectbox("pembayaran", list_payment, list_payment.index(pembayaran_lama))
                 
             col1, col2 = st.columns([1, 6])
