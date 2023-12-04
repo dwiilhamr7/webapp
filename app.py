@@ -39,7 +39,7 @@ if page == "View Data":
     st.table(dummy_data)
 
 if page == "Edit Data":
-    if st.button('Tambah Data')
+    if st.button('Tambah Data'):
         st.subheader('Form Reservasi')
         total_harga = 0  # Inisialisasi total harga
 
