@@ -17,7 +17,7 @@ def home():
     st.header('DATABASE INTERNAL STAFF')
 
     image_path = "https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg"
-    st.image(image_path, caption='Warning!', caption='Database hanya diakses oleh karyawan/staff hotel')
+    st.image(image_path, caption='Warning! Database hanya diakses oleh karyawan/staff hotel')
 
     st.subheader("Pelayanan :")
     st.markdown("- Penyimpanan Data Room Hotel")
