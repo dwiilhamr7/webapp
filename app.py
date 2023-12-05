@@ -171,9 +171,22 @@ def restaurant_hotel():
                             session.commit()
                             st.experimental_rerun()
    
+def visualisasi_data():
+    st.header('Visualisasi Database Diamond Luxury Tower Hotel')
+    page_visul = st.sidebar.selectbox("Visualisasi", ["Data Hotel","Data Restaurant"])
+
+    if page_visul == "Data Hotel":
+        data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0").set_index('id')
+        st.dataframe(data)
+
+    if page_visul == "Data Restaurant":
+        data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0").set_index('id')
+        st.dataframe(data)
+
+
 if st.sidebar.checkbox("Room Hotel"):
-    room_hotel()
+        room_hotel()
 if st.sidebar.checkbox("Restaurant Hotel"):
-    restaurant_hotel()
+        restaurant_hotel()
 else:
     home()
