@@ -34,7 +34,7 @@ def room_hotel():
     page = st.sidebar.selectbox("Room Hotel", ['View Data Room Hotel', 'Additing Data Room Hotel'])
 
     if page == "View Data Room Hotel":
-        data = conn.query_room('Select * FROM hotel_room ORDER BY id;', ttl="0").set_index('id')
+        data = conn.query('Select * FROM hotel_room ORDER BY id;', ttl="0").set_index('id')
         st.dataframe(data)
     
     if page == "Additing Data Room Hotel":
@@ -45,7 +45,7 @@ def room_hotel():
                 session.execute(query_room, {'1':'', '2':'', '3':'', '4':'', '5':None, '6':'', '7':'', '8':'', '9':'', '10':'', '11':['Rp']})
                 session.commit()
         
-    data = conn.query_room('SELECT * FROM hotel_room ORDER By id;', ttl="0")
+    data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0")
     for _, result in data.iterrows(): 
         id = result['id']
         nama_lama = result.loc["nama"]
