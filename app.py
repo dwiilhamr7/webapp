@@ -13,8 +13,8 @@ st.header('Diamond Luxury Tower Hotel')
 page_akhir = st.sidebar.selectbox("Restaurant Hotel", ["Database Restaurant","Additing Pelanggan"])
 
 with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS hotel_restaurant (id serial, pelanggan text, makanan varchar, jumlah_makanan integer, minuman varchar, \
-                                                       jumlah_minuman integer, metode text, no_tempat text, total_harga integer, pembayaran text);')
+    query = text('CREATE TABLE IF NOT EXISTS hotel_restaurant (id serial, pelanggan text, makanan text, jumlah_makanan text, minuman text, \
+                                                       jumlah_minuman text, metode text, no_tempat text, total_harga text, pembayaran text);')
     session.execute(query)
 
 if page_akhir == "Database Restaurant":
