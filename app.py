@@ -143,19 +143,19 @@ def restaurant_hotel():
                     with col1:
                         if st.form_submit_button('UPDATE'):
                             with conn.session as session:
-                                query = text('UPDATE hotel_restaurant \
+                                query_restaurant = text('UPDATE hotel_restaurant \
                                             SET pelanggan=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
                                             metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, \
                                             WHERE id=:10;')
-                                session.execute(query, {'1':pelanggan_baru, '2':makanan_baru, '3':jumlah_makanan_baru, '4':minuman_baru, '5':jumlah_minuman_baru, 
+                                session.execute(query_restaurant, {'1':pelanggan_baru, '2':makanan_baru, '3':jumlah_makanan_baru, '4':minuman_baru, '5':jumlah_minuman_baru, 
                                                         '6':metode_baru, '7':no_tempat_baru, '8':total_harga_baru, '9':pembayaran_baru, '10':id})
                                 session.commit()
                                 st.experimental_rerun()
                     
                     with col2:
                         if st.form_submit_button('DELETE'):
-                            query = text(f'DELETE FROM hotel_restaurant WHERE id=:1;')
-                            session.execute(query, {'1':id})
+                            query_restaurant = text(f'DELETE FROM hotel_restaurant WHERE id=:1;')
+                            session.execute(query_restaurant, {'1':id})
                             session.commit()
                             st.experimental_rerun()
 
