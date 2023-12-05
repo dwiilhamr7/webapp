@@ -27,7 +27,7 @@ if page_awal == "Additing Database":
         with conn.session as session:
             query = text('INSERT INTO hotel_room (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) \
                           VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11);')
-            session.execute(query, {'1':'', '2':'', '3':'', '4':'[]', '5':None, '6':'', '7':'', '8':'', '9':'', '10':'', '11':''})
+            session.execute(query, {'1':'', '2':'', '3':'', '4':'', '5':None, '6':'', '7':'', '8':'', '9':'', '10':'', '11':''})
             session.commit()
 
     data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0")
