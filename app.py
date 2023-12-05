@@ -107,7 +107,7 @@ if page_akhir == "Additing Pelanggan":
         total_harga_lama = result["total_harga"]
         pembayaran_lama = result["pembayaran"]
 
-        with st.expander(f'a.n. {nama_awal}'):
+        with st.expander(f'a.n. {pelanggan_lama}'):
             with st.form(f'data-{id}'):
                 pelanggan_baru = st.text_input("nama", pelanggan_lama)
                 makanan_baru = st.text_input("makanan", makanan_lama)
