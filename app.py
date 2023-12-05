@@ -108,9 +108,9 @@ def restaurant_hotel():
     if page_akhir == "Additing Pelanggan":
         if st.button('Additing'):
             with conn.session as session:
-                    query_restaurant = text('INSERT INTO hotel_restaurant ("pelanggan", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
+                    query = text('INSERT INTO hotel_restaurant ("pelanggan", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
                             VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9);')
-                    session.execute(query_restaurant, {'1':'', '2':None, '3':0, '4':None, '5':0, '6':'', '7':'', '8':0, '9':''})
+                    session.execute(query, {'1':'', '2':None, '3':0, '4':None, '5':0, '6':'', '7':'', '8':0, '9':''})
                     session.commit()
 
         data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0")
@@ -143,19 +143,19 @@ def restaurant_hotel():
                     with col1:
                         if st.form_submit_button('UPDATE'):
                             with conn.session as session:
-                                query_restaurant = text('UPDATE hotel_restaurant \
+                                query = text('UPDATE hotel_restaurant \
                                             SET pelanggan=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
                                             metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, \
                                             WHERE id=:10;')
-                                session.execute(query_restaurant, {'1':pelanggan_baru, '2':makanan_baru, '3':jumlah_makanan_baru, '4':minuman_baru, '5':jumlah_minuman_baru, 
+                                session.execute(query, {'1':pelanggan_baru, '2':makanan_baru, '3':jumlah_makanan_baru, '4':minuman_baru, '5':jumlah_minuman_baru, 
                                                         '6':metode_baru, '7':no_tempat_baru, '8':total_harga_baru, '9':pembayaran_baru, '10':id})
                                 session.commit()
                                 st.experimental_rerun()
                     
                     with col2:
                         if st.form_submit_button('DELETE'):
-                            query_restaurant = text(f'DELETE FROM hotel_restaurant WHERE id=:1;')
-                            session.execute(query_restaurant, {'1':id})
+                            query = text(f'DELETE FROM hotel_restaurant WHERE id=:1;')
+                            session.execute(query, {'1':id})
                             session.commit()
                             st.experimental_rerun()
 
