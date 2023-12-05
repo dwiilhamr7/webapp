@@ -23,11 +23,12 @@ def home():
     image_path = "https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg"
     st.image(image_path, caption='Warning! Database hanya diakses oleh karyawan/staff hotel')
 
-    st.subheader("Pelayanan :")
-    st.markdown("- Penyimpanan Data Room Hotel")
-    st.markdown("- Penyimpanan Data Restaurant")
-    st.markdown("- Penambahan Data")
-    st.markdown("- Visualisasi Data")
+    st.subheader("Anggota Kelompok :")
+    st.markdown("- Melynda Isaura (2043221015)")
+    st.markdown("- Hellen Aldenia R. (2043221046)")
+    st.markdown("- Dwi Ilham Ramadhany (2043221054)")
+    st.markdown("- Avika Niswata M. (2043221060)")
+    st.markdown("- M. Rafli Nugrahasyach (2043221085)")
 
 def room_hotel():
     page_awal = st.sidebar.selectbox("Room Hotel", ["Database Hotel","Additing Database"])
