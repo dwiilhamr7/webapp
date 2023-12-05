@@ -63,10 +63,10 @@ if page_akhir == "Additing Pelanggan":
                         with conn.session as session:
                             query = text('UPDATE hotel_restaurant \
                                           SET pelanggan=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
-                                          metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, \
+                                          metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, tanggal=:10\
                                           WHERE id=:10;')
                             session.execute(query, {'1':pelanggan_akhir, '2':makanan_akhir, '3':jumlah_makanan_akhir, '4':minuman_akhir, '5':jumlah_minuman_akhir, 
-                                                    '6':metode_akhir, '7':no_tempat_akhir, '8':total_harga_akhir, '9':pembayaran_akhir, '10':id})
+                                                    '6':metode_akhir, '7':no_tempat_akhir, '8':total_harga_akhir, '9':pembayaran_akhir, '10':tanggal_akhir, '11':id})
                             session.commit()
                             st.experimental_rerun()
                 
