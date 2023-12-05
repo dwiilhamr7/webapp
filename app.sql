@@ -30,9 +30,9 @@ CREATE TABLE hotel_restaurant (
     minuman text, 
     jumlah_minuman integer,
     metode text,
-    no_tempat time,
+    no_tempat text,
     total_harga integer,
-    pembayaran time
+    pembayaran text
 );
 
 INSERT INTO hotel_restaurant (pelanggan, makanan, jumlah_makanan, minuman, jumlah_minuman, metode, no_tempat, total_harga, pembayaran) 
