@@ -113,7 +113,7 @@ def restaurant_hotel():
                 session.execute(query_restaurant, {'1':'', '2':None, '3':0, '4':None, '5':0, '6':'', '7':'', '8':0, '9':''})
                 session.commit()
         
-    data = conn.query_restaurant('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0")
+    data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0")
     for _, result in data.iterrows():
         id = result['id']
         pelanggan_lama = result.loc["pelanggan"]
