@@ -31,7 +31,6 @@ def home():
 
 def room_hotel():
     st.header('Reservation Room Hotel Diamond Luxury Tower Hotel')
-
     page = st.sidebar.selectbox("Room Hotel", ['View Data Room Hotel', 'Additing Data Room Hotel'])
 
     if page == "View Data Room Hotel":
@@ -136,7 +135,7 @@ def restaurant_hotel():
             jumlah_minuman_baru = st.text_input("jumlah_minuman", jumlah_minuman_lama)
             metode_baru = st.selectbox("metode", list_metode, list_metode.index(metode_lama))
             no_tempat_baru = st.text_input("no_tempat", no_tempat_lama)
-            total_harga_baru = st.date_input("total_harga", total_harga_lama)
+            total_harga_baru = st.text_input("total_harga", total_harga_lama)
             pembayaran_baru = st.selectbox("pembayaran", list_payment, list_payment.index(pembayaran_lama))
                 
             col1, col2 = st.columns([1, 6])
