@@ -110,7 +110,7 @@ def restaurant_hotel():
             with conn.session as session:
                 query = text('INSERT INTO hotel_restaurant ("pelanggan", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
                         VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9);')
-                session.execute(query, {'1':'', '2':None, '3':None, '4':None, '5':None, '6':'', '7':'', '8':0, '9':''})
+                session.execute(query, {'1':'', '2':None, '3':'-', '4':None, '5':'-', '6':'', '7':'', '8':0, '9':''})
                 session.commit()
         
     data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0")
