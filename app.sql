@@ -29,7 +29,7 @@ CREATE TABLE hotel_restaurant (
     jumlah_makanan integer,
     minuman text, 
     jumlah_minuman integer,
-    metode date,
+    metode text,
     no_tempat time,
     total_harga integer,
     pembayaran time
