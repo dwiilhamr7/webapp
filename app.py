@@ -16,11 +16,11 @@ with conn.session as session:
 st.header('Diamond Luxury Tower Hotel')
 page_awal = st.sidebar.selectbox("hotel_room Hotel", ["Database Hotel","Additing Database"])
 
-if page == "Database Hotel":
+if page_awal == "Database Hotel":
     data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0").set_index('id')
     st.dataframe(data)
 
-if page == "Additing Database":
+if page_awal == "Additing Database":
     if st.button('Tambah Data'):
         with conn.session as session:
             query = text('INSERT INTO hotel_room (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) \
@@ -78,13 +78,13 @@ if page == "Additing Database":
                         session.commit()
                         st.experimental_rerun()
 
-page_awal = st.sidebar.selectbox("hotel_room Hotel", ["Database Hotel","Additing Database"])
+page_akhir = st.sidebar.selectbox("hotel_room Hotel", ["Database Hotel","Additing Database"])
 
-if page == "Database Hotel":
+if page_akhir == "Database Hotel":
     data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0").set_index('id')
     st.dataframe(data)
 
-if page == "Additing Database":
+if page_akhir == "Additing Database":
     if st.button('Tambah Data'):
         with conn.session as session:
             query = text('INSERT INTO hotel_room (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) \
