@@ -87,7 +87,7 @@ if page_akhir == "Database Restaurant":
     st.dataframe(data)
 
 if page_akhir == "Additing Pelanggan":
-    if st.button('Tambah Data'):
+    if st.button('Additing'):
        with conn.session as session:
                 query_restaurant = text('INSERT INTO hotel_restaurant ("pelanggan", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
                         VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9);')
