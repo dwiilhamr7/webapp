@@ -102,7 +102,7 @@ def restaurant_hotel():
     page = st.sidebar.selectbox("Restaurant Hotel", ['View Data Restaurant', 'Additing Data Restaurant'])
 
     if page == "View Data Restaurant":
-        data = conn.query_restaurant('Select * FROM hotel_restaurant ORDER BY id;', ttl="0").set_index('id')
+        data = conn.query('Select * FROM hotel_restaurant ORDER BY id;', ttl="0").set_index('id')
         st.dataframe(data)
     
     if page == "Additing Data Restaurant":
