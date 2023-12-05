@@ -1,24 +1,24 @@
-DROP TABLE IF EXISTS room;
-
-CREATE TABLE room (
+DROP TABLE IF EXISTS hotel_room;
+CREATE TABLE hotel_room (
     id serial,
     nama text,
     gender text,
     contact text,
-    series_room text[],
+    series_room text,  
     other_needs text,
     check_in date,
     time_ci time,
     check_out date,
     time_co time,
-    payment text, 
-    price text 
+    payment text,  
+    price text  
 );
 
-INSERT INTO room (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) 
-VALUES
-    ('dr. Nurita', 'male', '0812121', ARRAY['twin deluxe'], 'water', '2023-10-01', '13:00', '2023-10-02', '08:00', 'Tunai', 280000),
-    ('Aldenia Boo', 'female', '0812122018', ARRAY['twin deluxe'], 'water & sandals', '2023-10-02', '14:00', '2023-10-04', '08:00', 'Transfer', 1050000);
+insert into hotel_room  (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) 
+values
+	('Arindra Ningtiyas', 'male', '0812121', '["Twin Deluxe"]', 'Water', '2023-10-01', '13:00', '2023-10-02', '08:00', 'Tunai', 280000),
+	('Pahlawan Nur Ihzza', 'male', '0813876', '["Business Premium"]', 'Water dan Sabdals', '2023-10-02', '14:00', '2023-10-04', '09:00', 'Transfer', 850000)
+	;
 
 DROP TABLE IF EXISTS restaurant;
 
