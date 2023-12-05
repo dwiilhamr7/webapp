@@ -1,7 +1,7 @@
 import streamlit as st
 from sqlalchemy import text
 
-list_room = ['', 'twin deluxe', 'double bed', 'premium intermediate', 'business premium', 'diamond class', 'Paket Request']
+list_room = ['', 'twin_deluxe', 'double_bed', 'premium_intermediate', 'business_premium', 'diamond_class', 'Paket_Request']
 list_gender = ['', 'male', 'female']
 list_payment = ['', 'ATM', 'Transfer', 'Tunai']
 list_metode = ['','Diantar', 'Ditunggu']
