@@ -18,7 +18,7 @@ with conn.session as session:
 
 def home():
     st.title('DIAMOND LUXURY TOWER HOTEL')
-    st.header('DATABASE INTERNAL STAFF')
+    st.markdown('# DATABASE INTERNAL STAFF #', unsafe_allow_html=True)
 
     image_path = "https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg"
     st.image(image_path, caption='Warning! Database hanya diakses oleh karyawan/staff hotel')
