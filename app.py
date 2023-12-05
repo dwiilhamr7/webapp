@@ -13,8 +13,8 @@ st.header('Diamond Luxury Tower Hotel')
 page_akhir = st.sidebar.selectbox("Restaurant Hotel", ["Database Restaurant","Additing Pelanggan"])
 
 with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS hotel_restaurant (id serial, pelanggan text, makanan varchar, jumlah_makanan integer, minuman varchar, \
-                                                       jumlah_minuman integer, metode text, no_tempat text, total_harga integer, pembayaran text);')
+    query = text('CREATE TABLE IF NOT EXISTS hotel_restaurant (id serial, pelanggan text, makanan varchar, jumlah_makanan text, minuman varchar, \
+                                                       jumlah_minuman text, metode text, no_tempat text, total_harga text, pembayaran text, tanggal date);')
     session.execute(query)
 
 if page_akhir == "Database Restaurant":
@@ -24,9 +24,9 @@ if page_akhir == "Database Restaurant":
 if page_akhir == "Additing Pelanggan":
     if st.button('Additing'):
        with conn.session as session:
-                query_restaurant = text('INSERT INTO hotel_restaurant ("pelanggan", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
-                        VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9);')
-                session.execute(query_restaurant, {'1':'', '2':None, '3':0, '4':None, '5':0, '6':'', '7':'', '8':0, '9':''})
+                query_restaurant = text('INSERT INTO hotel_restaurant ("pelanggan", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran", "tanggal") \
+                        VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10);')
+                session.execute(query_restaurant, {'1':'', '2':None, '3':0, '4':None, '5':0, '6':'', '7':'', '8':0, '9':'', '10':''})
                 session.commit()
 
     data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0")
@@ -41,18 +41,20 @@ if page_akhir == "Additing Pelanggan":
         no_tempat_awal = result["no_tempat"]
         total_harga_awal = result["total_harga"]
         pembayaran_awal = result["pembayaran"]
+        tanggal_awal = result["tanggal"]
 
         with st.expander(f'a.n. {pelanggan_awal}'):
             with st.form(f'data-{id}'):
                 pelanggan_akhir = st.text_input("nama", pelanggan_awal)
-                makanan_akhir = st.text_input("makanan", makanan_awal)
+                makanan_akhir = st.multiselect("makanan", ["Mie Ayam Spesial", "Mie Ayam Bakso", "Nasi Goreng Sosis", "Nasi Goreng Udang", "Steak", "Nasi Kebuli Kambing", "Bakso", "Soto", "Nasi Campur"], eval(makanan_awal))
                 jumlah_makanan_akhir = st.text_input("jumlah_makanan", jumlah_makanan_awal)
-                minuman_akhir = st.text_input("minuman", minuman_awal) 
+                minuman_akhir = st.multiselect("minuman",["Air Putih", "Es Jeruk", "Es Teh", "Es Campur", "STMJ", "Soda Manis", "Es Krim", "Oreo Shake"], eval(minuman_awal)) 
                 jumlah_minuman_akhir = st.text_input("jumlah_minuman", jumlah_minuman_awal)
                 metode_akhir = st.selectbox("metode", list_metode, list_metode.index(metode_awal))
                 no_tempat_akhir = st.text_input("no_tempat", no_tempat_awal)
                 total_harga_akhir = st.text_input("total_harga", total_harga_awal)
                 pembayaran_akhir = st.selectbox("pembayaran", list_payment, list_payment.index(pembayaran_awal))
+                tanggal_akhir = st.date_input("tanggal", tanggal_awal)
 
                 col1, col2 = st.columns([1, 6])
 
@@ -61,10 +63,10 @@ if page_akhir == "Additing Pelanggan":
                         with conn.session as session:
                             query = text('UPDATE hotel_restaurant \
                                           SET pelanggan=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
-                                          metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, \
-                                          WHERE id=:10;')
+                                          metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, tanggal=:10, \
+                                          WHERE id=:11;')
                             session.execute(query, {'1':pelanggan_akhir, '2':makanan_akhir, '3':jumlah_makanan_akhir, '4':minuman_akhir, '5':jumlah_minuman_akhir, 
-                                                    '6':metode_akhir, '7':no_tempat_akhir, '8':total_harga_akhir, '9':pembayaran_akhir, '10':id})
+                                                    '6':metode_akhir, '7':no_tempat_akhir, '8':total_harga_akhir, '9':pembayaran_akhir, '10':tanggal_akhir,'11':id})
                             session.commit()
                             st.experimental_rerun()
                 
