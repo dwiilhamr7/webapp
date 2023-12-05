@@ -5,7 +5,7 @@ CREATE TABLE room (
     nama text,
     gender text,
     contact text,
-    series_room text,
+    series_room text[],
     other_needs text,
     check_in date,
     time_ci time,
