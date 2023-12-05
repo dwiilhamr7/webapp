@@ -32,27 +32,27 @@ if page_akhir == "Additing Pelanggan":
     data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0")
     for _, result in data.iterrows():        
         id = result['id']
-        pelanggan_lama = result.loc["pelanggan"]
-        makanan_lama = result["makanan"]
-        jumlah_makanan_lama = result["jumlah_makanan"]
-        minuman_lama = result["minuman"]
-        jumlah_minuman_lama = result["jumlah_minuman"]
-        metode_lama = result["metode"]
-        no_tempat_lama = result["no_tempat"]
-        total_harga_lama = result["total_harga"]
-        pembayaran_lama = result["pembayaran"]
+        pelanggan_awal = result.loc["pelanggan"]
+        makanan_awal = result["makanan"]
+        jumlah_makanan_awal = result["jumlah_makanan"]
+        minuman_awal = result["minuman"]
+        jumlah_minuman_awal = result["jumlah_minuman"]
+        metode_awal = result["metode"]
+        no_tempat_awal = result["no_tempat"]
+        total_harga_awal = result["total_harga"]
+        pembayaran_awal = result["pembayaran"]
 
-        with st.expander(f'a.n. {pelanggan_lama}'):
+        with st.expander(f'a.n. {pelanggan_awal}'):
             with st.form(f'data-{id}'):
-                pelanggan_baru = st.text_input("nama", pelanggan_lama)
-                makanan_baru = st.text_input("makanan", makanan_lama)
-                jumlah_makanan_baru = st.text_input("jumlah_makanan", jumlah_makanan_lama)
-                minuman_baru = st.text_input("minuman", minuman_lama) 
-                jumlah_minuman_baru = st.text_input("jumlah_minuman", jumlah_minuman_lama)
-                metode_baru = st.selectbox("metode", list_metode, list_metode.index(metode_lama))
-                no_tempat_baru = st.text_input("no_tempat", no_tempat_lama)
-                total_harga_baru = st.text_input("total_harga", total_harga_lama)
-                pembayaran_baru = st.selectbox("pembayaran", list_payment, list_payment.index(pembayaran_lama))
+                pelanggan_akhir = st.text_input("nama", pelanggan_awal)
+                makanan_akhir = st.text_input("makanan", makanan_awal)
+                jumlah_makanan_akhir = st.text_input("jumlah_makanan", jumlah_makanan_awal)
+                minuman_akhir = st.text_input("minuman", minuman_awal) 
+                jumlah_minuman_akhir = st.text_input("jumlah_minuman", jumlah_minuman_awal)
+                metode_akhir = st.selectbox("metode", list_metode, list_metode.index(metode_awal))
+                no_tempat_akhir = st.text_input("no_tempat", no_tempat_awal)
+                total_harga_akhir = st.text_input("total_harga", total_harga_awal)
+                pembayaran_akhir = st.selectbox("pembayaran", list_payment, list_payment.index(pembayaran_awal))
 
                 col1, col2 = st.columns([1, 6])
 
@@ -63,8 +63,8 @@ if page_akhir == "Additing Pelanggan":
                                           SET pelanggan=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
                                           metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, \
                                           WHERE id=:10;')
-                            session.execute(query, {'1':pelanggan_baru, '2':makanan_baru, '3':jumlah_makanan_baru, '4':minuman_baru, '5':jumlah_minuman_baru, 
-                                                    '6':metode_baru, '7':no_tempat_baru, '8':total_harga_baru, '9':pembayaran_baru, '10':id})
+                            session.execute(query, {'1':pelanggan_akhir, '2':makanan_akhir, '3':jumlah_makanan_akhir, '4':minuman_akhir, '5':jumlah_minuman_akhir, 
+                                                    '6':metode_akhir, '7':no_tempat_akhir, '8':total_harga_akhir, '9':pembayaran_akhir, '10':id})
                             session.commit()
                             st.experimental_rerun()
                 
