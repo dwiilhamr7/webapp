@@ -52,10 +52,9 @@ if page_awal == "Additing Database":
                 contact_akhir = st.text_input("contact", contact_awal)
                 room_akhir = st.text_input("series_room", room_awal)
                 other_akhir = st.text_input("other_needs", other_awal)
-                checkin_akhir = st.date_input("check_in", checkin_awal)
+                checkin_akhir = st.date_input("check_in", checkin_awal) if checkin_awal else None
                 timeci_akhir = st.time_input("time_ci", timeci_awal)
-                checkout_akhir = st.date_input("check_out", checkout_awal)
-                timeco_akhir = st.time_input("time_co", timeco_awal)
+                checkout_akhir = st.date_input("check_out", checkout_awal) if checkout_awal else None                timeco_akhir = st.time_input("time_co", timeco_awal)
                 payment_akhir = st.selectbox("payment", list_payment, list_payment.index(payment_awal))
                 price_akhir = st.text_input("price", price_awal)
 
