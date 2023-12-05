@@ -9,7 +9,7 @@ list_metode = ['','Diantar', 'Ditunggu']
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS ROOM (id serial, nama text, gender char(25), contact text, series_room text, other_needs text, \
+    query = text('CREATE TABLE IF NOT EXISTS room (id serial, nama text, gender char(25), contact text, series_room text, other_needs text, \
                                                        check_in date, time_ci text, check_out date, time_co text, payment text, price text);')
     session.execute(query)
 
