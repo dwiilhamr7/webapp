@@ -34,7 +34,7 @@ def room_hotel():
     page = st.sidebar.selectbox("Room Hotel", ['View Data Room Hotel', 'Additing Data Room Hotel'])
 
     if page == "View Data Room Hotel":
-        data = conn.query_room('Select * FROM hotel_room ORDER BY id;', ttl="0").set_index('id')
+        data = conn.query('Select * FROM hotel_room ORDER BY id;', ttl="0").set_index('id')
         st.dataframe(data)
     
     if page == "Additing Data Room Hotel":
