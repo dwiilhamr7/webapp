@@ -1,4 +1,3 @@
-kueri fix
 import streamlit as st
 from sqlalchemy import text
 
