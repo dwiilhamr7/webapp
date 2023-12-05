@@ -66,7 +66,7 @@ if page == "Additing Database":
                                           SET nama=:1, gender=:2, contact=:3, series_room=:4, other_needs=:5 \
                                           check_in=:6, time_ci=:7, check_out=:8, time_co=:9, payment=:10, price=:11 \
                                           WHERE id=:12;')
-                            session.execute(query, {'1':nama_akhir, '2':gender_akhir, '3':contact_akhir, '4':str(room_akhir), '5':other_akhir,'6':checkin_akhir, \
+                            session.execute(query, {'1':nama_akhir, '2':gender_akhir, '3':contact_akhir, '4':str(room_akhir), '5':other_akhir,'6':checkin_akhir, 
                                                     '7':timeci_akhir, '8':checkout_akhir, '9':timeco_akhir, '10':payment_akhir, '11':price_akhir, '12':id})
                             session.commit()
                             st.experimental_rerun()
