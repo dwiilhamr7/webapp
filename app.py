@@ -8,13 +8,14 @@ list_metode = ['','Diantar', 'Ditunggu']
 
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
+
+st.header('Diamond Luxury Tower Hotel')
+page_akhir = st.sidebar.selectbox("Restaurant Hotel", ["Database Restaurant","Additing Pelanggan"])
+
 with conn.session as session:
     query = text('CREATE TABLE IF NOT EXISTS hotel_restaurant (id serial, pelanggan text, makanan varchar, jumlah_makanan integer, minuman varchar, \
                                                        jumlah_minuman integer, metode text, no_tempat text, total_harga integer, pembayaran text);')
     session.execute(query)
-
-st.header('Diamond Luxury Tower Hotel')
-page_akhir = st.sidebar.selectbox("Restaurant Hotel", ["Database Restaurant","Additing Pelanggan"])
 
 if page_akhir == "Database Restaurant":
     data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0").set_index('id')
