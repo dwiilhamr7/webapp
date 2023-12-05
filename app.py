@@ -50,7 +50,7 @@ if page_awal == "Additing Database":
                 nama_akhir = st.text_input("nama", nama_awal)
                 gender_akhir = st.selectbox("gender", list_gender, list_gender.index(gender_awal))
                 contact_akhir = st.text_input("contact", contact_awal)
-                room_akhir = st.multiselect("series_room", ['double_bed', 'twin_deluxe', 'premium_class', 'business_class', 'diamond_class'], default=room_awal)
+                room_akhir = st.multiselect("series_room", ['double_bed', 'twin_deluxe', 'premium_class', 'business_class', 'diamond_class'], default=[room for room in room_awal if room in list_room])
                 other_akhir = st.text_input("other_needs", other_awal)
                 checkin_akhir = st.date_input("check_in", checkin_awal)
                 timeci_akhir = st.time_input("time_ci", timeci_awal)
