@@ -9,9 +9,12 @@ list_metode = ['','Diantar', 'Ditunggu']
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
 with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS hotel_room (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
+    query_room = text('CREATE TABLE IF NOT EXISTS hotel_room (id serial, nama text, gender varchar, contact text, series_room varchar, other_needs text, \
                                                        check_in date, time_ci time, check_out date, time_co time, payment text, price text);')
-    session.execute(query)
+    query_restaurant = text('CREATE TABLE IF NOT EXISTS hotel_restaurant (id serial, pelanggan text, makanan varchar, jumlah_makanan integer, minuman varchar, \
+                                                       jumlah_minuman integer, metode text, no_tempat text, total_harga integer, pembayaran text);')
+    session.execute(query_room)
+    session.execute(query_restaurant)
 
 def home():
     st.title('DIAMOND LUXURY TOWER HOTEL')
@@ -40,12 +43,11 @@ def room_hotel():
             with conn.session as session:
                 query = text('INSERT INTO hotel_room ("nama", "gender", "contact", "series_room", "other_needs", "check_in", "time_ci", "check_out", "time_co", "payment", "price") \
                         VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11);')
-                session.execute(query, {'1':'', '2':'', '3':'', '4':'', '5':None, '6':None, '7':'', '8':None, '9':'', '10':'', '11':['Rp']})
+                session.execute(query, {'1':'', '2':'', '3':'', '4':'', '5':None, '6':'', '7':'', '8':'', '9':'', '10':'', '11':['Rp']})
                 session.commit()
         
     data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0")
-    for _, result in data.iterrows():
-        st.write(result) 
+    for _, result in data.iterrows(): 
         id = result['id']
         nama_lama = result.loc["nama"]
         gender_lama = result["gender"]
@@ -107,16 +109,15 @@ def restaurant_hotel():
     if page == "Additing Data Restaurant":
         if st.button('Tambah Data'):
             with conn.session as session:
-                query = text('INSERT INTO hotel_restaurant ("nama", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
+                query = text('INSERT INTO hotel_restaurant ("pelanggan", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
                         VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9);')
-                session.execute(query, {'1':'', '2':'', '3':None, '4':'', '5':None, '6':'', '7':'', '8':['Rp'], '9':''})
+                session.execute(query, {'1':'', '2':None, '3':None, '4':None, '5':None, '6':'', '7':'', '8':['Rp'], '9':''})
                 session.commit()
         
     data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0")
     for _, result in data.iterrows():
-        st.write(result) 
         id = result['id']
-        nama_lama1 = result.loc["nama"]
+        pelanggan_lama = result.loc["pelanggan"]
         makanan_lama = result["makanan"]
         jumlah_makanan_lama = result["jumlah_makanan"]
         minuman_lama = result["minuman"]
@@ -126,9 +127,9 @@ def restaurant_hotel():
         total_harga_lama = result["total_harga"]
         pembayaran_lama = result["pembayaran"]
 
-    with st.expander(f'a.n. {nama_lama1}'):
+    with st.expander(f'a.n. {pelanggan_lama}'):
         with st.form(f'data-{id}'):
-            nama_baru1 = st.text_input("nama", nama_lama1)
+            pelanggan_baru = st.text_input("nama", pelanggan_lama)
             makanan_baru = st.text_input("makanan", makanan_lama)
             jumlah_makanan_baru = st.text_input("jumlah_makanan", jumlah_makanan_lama)
             minuman_baru = st.text_input("minuman", minuman_lama) 
@@ -144,10 +145,10 @@ def restaurant_hotel():
                     if st.form_submit_button('UPDATE'):
                         with conn.session as session:
                             query = text('UPDATE hotel_restaurant \
-                                          SET nama=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
+                                          SET pelanggan=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
                                           metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, \
                                           WHERE id=:10;')
-                            session.execute(query, {'1':nama_baru1, '2':makanan_baru, '3':jumlah_makanan_baru, '4':minuman_baru, '5':jumlah_minuman_baru, 
+                            session.execute(query, {'1':pelanggan_baru, '2':makanan_baru, '3':jumlah_makanan_baru, '4':minuman_baru, '5':jumlah_minuman_baru, 
                                                     '6':metode_baru, '7':no_tempat_baru, '8':total_harga_baru, '9':pembayaran_baru, 
                                                     '10':id})
                             session.commit()
