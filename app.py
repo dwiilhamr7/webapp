@@ -8,13 +8,12 @@ list_metode = ['', 'Diantar', 'Dijemput']
 
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
-
-def room_hotel():
     with conn.session as session:
         query = text('CREATE TABLE IF NOT EXISTS hotel_room (id serial, nama text, gender char(25), contact text, series_room text, other_needs text, \
                                                         check_in date, time_ci time, check_out date, time_co time, payment text, price text);')
         session.execute(query)
 
+def room_hotel():
     st.header('Reservation Room Diamond Luxury Tower Hotel')
     page = st.sidebar.selectbox("Room Hotel ", ["Database Room Hotel","Additing Data Room Hotel"])
 
