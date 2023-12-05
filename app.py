@@ -31,6 +31,8 @@ def home():
     st.markdown("- M. Rafli Nugrahasyach (2043221085)")
 
 def room_hotel():
+    
+    st.header('Diamond Luxury Tower Hotel')
     page_awal = st.sidebar.selectbox("Room Hotel", ["Database Hotel","Additing Database"])
 
     with conn.session as session:
@@ -102,6 +104,8 @@ def room_hotel():
                             st.experimental_rerun()
 
 def restaurant_hotel():
+    
+    st.header('Diamond Luxury Tower Hotel')
     page_akhir = st.sidebar.selectbox("Restaurant Hotel", ["Database Restaurant","Additing Pelanggan"])
 
     with conn.session as session:
