@@ -182,11 +182,11 @@ def visualisasi_data():
         st.dataframe(data)
 
         fig, ax = plt.subplots()
-        sns.countplot(x='series_room', data=data, ax=ax)
+        sns.countplot(x='payment', data=data, ax=ax)
         st.pyplot(fig)
 
         fig, ax = plt.subplots()
-        sns.countplot(x='payment', data=data, ax=ax)
+        sns.countplot(x='other_needs', data=data, ax=ax)
         st.pyplot(fig)
 
     if page_visul == "Data Restaurant":
