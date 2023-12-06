@@ -142,7 +142,7 @@ def restaurant_hotel():
                     pelanggan_akhir = st.text_input("nama", pelanggan_awal)
                     makanan_akhir = st.multiselect("makanan", ['Mie Ayam Bakso', 'Mie Ayam Spesial', 'Nasi Goreng Udang', 'Nasi Goreng Daging', 'Bakso Spesial', 'Steak With Omelette', 'Roti Panggang', 'Pisang Goreng CokJu', 'Rice Box Rendang',], eval(makanan_awal))
                     jumlah_makanan_akhir = st.text_input("jumlah_makanan", jumlah_makanan_awal)
-                    minuman_akhir = st.multiselect("minuman", ['Air Putih' 'Es Teh', 'Es Jeruk', 'Es Campur', 'STMJ', 'Ice Cream', 'Soda Suka-Suka', 'Kopi Hitam', 'Juice', 'Avocado Syrup'], eval(minuman_awal)) 
+                    minuman_akhir = st.multiselect("minuman", ['Air Putih' 'Es Teh', 'Es Jeruk', 'Es Campur', 'STMJ', 'Ice Cream', 'Soda Angkasa', 'Kopi Hitam', 'Juice', 'Avocado Syrup'], eval(minuman_awal)) 
                     jumlah_minuman_akhir = st.text_input("jumlah_minuman", jumlah_minuman_awal)
                     metode_akhir = st.selectbox("metode", list_metode, list_metode.index(metode_awal))
                     no_tempat_akhir = st.text_input("no_tempat", no_tempat_awal)
