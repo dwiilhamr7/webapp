@@ -179,7 +179,7 @@ def visualisasi_data():
     page_visul = st.sidebar.selectbox("Visualisasi", ["Data Hotel","Data Restaurant"])
 
     if page_visul == "Data Hotel":
-        st.header('Visualisasi Sederhana Database Room Hotel')
+        st.markdown("Visualisasi Sederhana Database Room Hotel")
         data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0").set_index('id')
         st.dataframe(data)
 
@@ -192,7 +192,7 @@ def visualisasi_data():
         st.pyplot(fig)
 
     if page_visul == "Data Restaurant":
-        st.header('Visualisasi Sederhana Database Restaurant')
+        st.markdown("Visualisasi Sederhana Database Restaurant")
         data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0").set_index('id')
         st.dataframe(data)
 
