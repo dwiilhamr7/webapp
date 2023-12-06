@@ -20,10 +20,31 @@ def home():
     st.title('DIAMOND LUXURY TOWER HOTEL')
     st.header('DATABASE INTERNAL STAFF')
 
-    st.markdown('<div style="position:relative;">'
-                '<img src="https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg" style="width:100%;">'
-                '<img src="https://th.bing.com/th/id/R.4bd3cf37915ee268cddbafaa1e69c831?rik=T6ItBycgnwKuLQ&riu=http%3a%2f%2fwww.rentacarbestprice.com%2fwp-content%2fuploads%2f2016%2f09%2fimage-26.jpeg&ehk=93xpzvZl9v%2bkpSGTVRNsS7STc7o3mBDHNRD4RpBbUNQ%3d&risl=&pid=ImgRaw&r=0" style="width:100%;">'
-                '</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div id="slideshow" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg" style="width:100%;">
+            </div>
+            <div class="carousel-item">
+                <img src="https://th.bing.com/th/id/R.4bd3cf37915ee268cddbafaa1e69c831?rik=T6ItBycgnwKuLQ&riu=http%3a%2f%2fwww.rentacarbestprice.com%2fwp-content%2fuploads%2f2016%2f09%2fimage-26.jpeg&ehk=93xpzvZl9v%2bkpSGTVRNsS7STc7o3mBDHNRD4RpBbUNQ%3d&risl=&pid=ImgRaw&r=0" style="width:100%;">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#slideshow" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#slideshow" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').carousel();
+        });
+    </script>
+    """, unsafe_allow_html=True)
 
     st.subheader("Anggota Kelompok :")
     st.markdown("- Melynda Isaura (2043221015)")
