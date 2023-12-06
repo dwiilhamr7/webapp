@@ -224,7 +224,7 @@ def visualisasi_data():
             ax.legend(loc='upper right')  # Menambahkan legenda
             st.pyplot(fig)
 
-            plot_combined_histogram(data, 'jumlah_makanan', 'jumlah_minuman', 'Histogram Jumlah Makanan dan Minuman', 'Jumlah', 'Frekuensi')
+        plot_combined_histogram(data, 'jumlah_makanan', 'jumlah_minuman', 'Histogram Jumlah Makanan dan Minuman', 'Jumlah', 'Frekuensi')
 
 if st.sidebar.checkbox("Room Hotel"):
     room_hotel()
