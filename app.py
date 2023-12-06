@@ -23,44 +23,41 @@ def home():
     st.markdown("""
     <style>
         #movable-image-container {
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
             width: 100%;
+            height: 400px;
         }
 
         #movable-image {
             width: 100%;
-            position: absolute;
             transition: transform 0.5s ease-in-out;
         }
     </style>
-    
-    <div id="movable-image-container">
-        <img id="movable-image" src="https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg">
-    </div>
+    """)
 
-    <script>
-        let currentPosition = 0;
+    image_path = "https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg"
 
-        function moveImage(direction) {
-            const image = document.getElementById('movable-image');
-            const container = document.getElementById('movable-image-container');
-            const containerWidth = container.clientWidth;
-            const imageWidth = image.clientWidth;
+    # Menampilkan gambar yang dapat digeser ke kanan dan kiri
+    with st.container():
+        st.image(image_path, caption='Warning! Database hanya diakses oleh karyawan/staff hotel', use_container_width=True)
 
-            if (direction === 'left' && currentPosition < 0) {
-                currentPosition += containerWidth;
-            } else if (direction === 'right' && currentPosition > -((imageWidth - containerWidth))) {
-                currentPosition -= containerWidth;
-            }
+    st.markdown("### Geser gambar ke kiri dan kanan:")
+    slider_value = st.slider("Pergeseran Gambar", -100, 100, 0)
 
-            image.style.transform = `translateX(${currentPosition}px)`;
-        }
-    </script>
+    # Menambahkan pergeseran gambar menggunakan CSS
+    st.markdown(f"""
+    <style>
+        #movable-image {{
+            transform: translateX({slider_value}%);
+        }}
+    </style>
+    """)
 
-    <button onclick="moveImage('left')">Move Left</button>
-    <button onclick="moveImage('right')">Move Right</button>
-    """, unsafe_allow_html=True)
+    st.image(image_path, caption='Gambar yang Dapat Digeser', use_container_width=True, key='movable-image')
+
 
     st.subheader("Anggota Kelompok :")
     st.markdown("- Melynda Isaura (2043221015)")
