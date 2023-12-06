@@ -18,7 +18,7 @@ CREATE TABLE hotel_room (
 insert into hotel_room  (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) 
 values
 	('Arindra Ningtiyas', 'male', '0812121', '["Twin Deluxe"]', 'Water', '2023-10-01', '13:00', '2023-10-02', '08:00', 'Tunai', '280000'),
-	('Pahlawan Nur Ihzza', 'male', '0813876', '["Business Premium"]', 'Water dan Sandals', '2023-10-02', '14:00', '2023-10-04', '09:00', 'Transfer', '850000')
+	('Pahlawan Nur Ihzza', 'male', '0813876', '["Business Premium"]', 'Sandal', '2023-10-02', '14:00', '2023-10-04', '09:00', 'Transfer', '850000')
 	;
 
 DROP TABLE IF EXISTS hotel_restaurant;

@@ -8,6 +8,7 @@ list_room = ['', 'Twin Deluxe', 'Double Bed', 'Family Class', 'Business Premium'
 list_gender = ['', 'male', 'female']
 list_payment = ['', 'ATM', 'Transfer', 'Tunai']
 list_metode = ['','Diantar', 'Ditunggu']
+list_needs = ['', 'Water', 'Sandal', 'Handuk', 'Bantal', 'Guling', 'Sikat Gigi']
 
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://dwiilhamr07:QBZxK7A6gYND@ep-hidden-unit-18107709.us-east-2.aws.neon.tech/web")
@@ -76,7 +77,7 @@ def room_hotel():
                     gender_akhir = st.selectbox("gender", list_gender, list_gender.index(gender_awal))
                     contact_akhir = st.text_input("contact", contact_awal)
                     room_akhir = st.multiselect("series_room", ['Twin Deluxe', 'Double Bed', 'Family Class', 'Business Premium', 'Diamond Class', 'VVIP Class'], eval(room_awal))
-                    other_akhir = st.text_input("other_needs", other_awal)
+                    other_akhir = st.selectbox("other_needs", list_needs, list_needs.index(other_awal))
                     checkin_akhir = st.date_input("check_in", checkin_awal)
                     timeci_akhir = st.time_input("time_ci", timeci_awal)
                     checkout_akhir = st.date_input("check_out", checkout_awal)
