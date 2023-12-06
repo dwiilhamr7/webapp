@@ -20,8 +20,9 @@ def home():
     st.title('DIAMOND LUXURY TOWER HOTEL')
     st.header('DATABASE INTERNAL STAFF')
 
-    image_path = "https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg"
-    st.image(image_path, caption='Warning! Database hanya diakses oleh karyawan/staff hotel')
+    st.markdown('<div style="position:relative;">'
+                '<img src="https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg" style="width:100%;">'
+                '</div>', unsafe_allow_html=True)
 
     st.subheader("Anggota Kelompok :")
     st.markdown("- Melynda Isaura (2043221015)")
