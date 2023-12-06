@@ -17,8 +17,8 @@ CREATE TABLE hotel_room (
 
 insert into hotel_room  (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) 
 values
-	('Arindra Ningtiyas', 'male', 0812121, '["Twin Deluxe"]', 'Water', '2023-10-01', '13:00', '2023-10-02', '08:00', 'Tunai', 280000),
-	('Pahlawan Nur Ihzza', 'male', 0813876, '["Business Premium"]', 'Water dan Sabdals', '2023-10-02', '14:00', '2023-10-04', '09:00', 'Transfer', 850000)
+	('Arindra Ningtiyas', 'male', '0812121', '["Twin Deluxe"]', 'Water', '2023-10-01', '13:00', '2023-10-02', '08:00', 'Tunai', '280000'),
+	('Pahlawan Nur Ihzza', 'male', '0813876', '["Business Premium"]', 'Water dan Sandals', '2023-10-02', '14:00', '2023-10-04', '09:00', 'Transfer', '850000')
 	;
 
 DROP TABLE IF EXISTS hotel_restaurant;
@@ -33,12 +33,11 @@ CREATE TABLE hotel_restaurant (
     metode text,
     no_tempat text,
     total_harga text,
-    pembayaran text,
-    tanggal date
+    pembayaran text
 );
 
-INSERT INTO hotel_restaurant (pelanggan, makanan, jumlah_makanan, minuman, jumlah_minuman, metode, no_tempat, total_harga, pembayaran, tanggal) 
+INSERT INTO hotel_restaurant (pelanggan, makanan, jumlah_makanan, minuman, jumlah_minuman, metode, no_tempat, total_harga, pembayaran) 
 VALUES
-    ('dr. Nurita', 'Mie Ayam Spesial', 2, 'Air Putih', 4, 'Diantar', 'Kamar 203', 60000, 'Tunai', '2023-10-02'),
-    ('Aldenia Boo', 'Nasi Goreng Udang, Mie Ayam Bakso', 1, 'Es Jeruk', 3, 'Ditunggu', 'Meja 8', 84000, 'ATM', '2023-10-02')
+    ('dr. Nurita', 'Mie Ayam Spesial', '2', 'Air Putih', '4', 'Diantar', 'Kamar 203', '60000', 'Tunai'),
+    ('Aldenia Boo', 'Nasi Goreng Udang, Mie Ayam Bakso', '1', 'Es Jeruk', '3', 'Ditunggu', 'Meja 8', '84000', 'ATM')
    	;
