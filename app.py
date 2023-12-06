@@ -220,7 +220,7 @@ def visualisasi_data():
             ax.legend(loc='upper right')  # Menambahkan legenda
             st.pyplot(fig)
 
-        plot_combined_histogram(data, 'jumlah_makanan', 'jumlah_minuman', 'Histogram Jumlah Makanan dan Minuman', 'Jumlah', 'Frekuensi')
+        plot_combined_histogram(data, 'jumlah_makanan', 'jumlah_minuman', '', 'Jumlah Tiap Membeli', 'Frekuensi')
 
         fig, ax = plt.subplots()
         sns.countplot(x='metode', data=data, ax=ax)
