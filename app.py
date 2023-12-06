@@ -211,7 +211,7 @@ def visualisasi_data():
         st.dataframe(data)
 
         def plot_combined_histogram(data, column1, column2, chart_title, x_label, y_label):
-            # Visualisasi histogram
+            st.subheader("Visualisasi Data Jumlah Banyak Pemesanan Tiap Pembelian")
             fig, ax = plt.subplots()
             ax.hist(data[column1], bins=20, alpha=0.5, label='Jumlah Makanan', edgecolor='black')
             ax.hist(data[column2], bins=20, alpha=0.5, label='Jumlah Minuman', edgecolor='black')
@@ -222,10 +222,12 @@ def visualisasi_data():
 
         plot_combined_histogram(data, 'jumlah_makanan', 'jumlah_minuman', '', 'Jumlah Tiap Membeli', 'Frekuensi')
 
+        st.subheader("Visualisasi Metode Pengambilan Makanan")
         fig, ax = plt.subplots()
         sns.countplot(x='metode', data=data, ax=ax)
         st.pyplot(fig)
 
+        st.subheader("Visualisasi Metode Pembayaran Konsumen")
         fig, ax = plt.subplots()
         sns.countplot(x='pembayaran', data=data, ax=ax)
         st.pyplot(fig)
