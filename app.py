@@ -22,6 +22,7 @@ def home():
 
     st.markdown('<div style="position:relative;">'
                 '<img src="https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg" style="width:100%;">'
+                '<img src="https://th.bing.com/th/id/R.4bd3cf37915ee268cddbafaa1e69c831?rik=T6ItBycgnwKuLQ&riu=http%3a%2f%2fwww.rentacarbestprice.com%2fwp-content%2fuploads%2f2016%2f09%2fimage-26.jpeg&ehk=93xpzvZl9v%2bkpSGTVRNsS7STc7o3mBDHNRD4RpBbUNQ%3d&risl=&pid=ImgRaw&r=0" style="width:100%;">'
                 '</div>', unsafe_allow_html=True)
 
     st.subheader("Anggota Kelompok :")
