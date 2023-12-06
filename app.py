@@ -20,44 +20,14 @@ def home():
     st.title('DIAMOND LUXURY TOWER HOTEL')
     st.header('DATABASE INTERNAL STAFF')
 
-    st.markdown("""
-    <style>
-        #movable-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            width: 100%;
-            height: 400px;
-        }
-
-        #movable-image {
-            width: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-    </style>
-    """)
-
-    image_path = "https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg"
-
-    # Menampilkan gambar yang dapat digeser ke kanan dan kiri
-    with st.container():
-        st.image(image_path, caption='Warning! Database hanya diakses oleh karyawan/staff hotel', use_container_width=True)
-
-    st.markdown("### Geser gambar ke kiri dan kanan:")
-    slider_value = st.slider("Pergeseran Gambar", -100, 100, 0)
-
-    # Menambahkan pergeseran gambar menggunakan CSS
-    st.markdown(f"""
-    <style>
-        #movable-image {{
-            transform: translateX({slider_value}%);
-        }}
-    </style>
-    """)
-
-    st.image(image_path, caption='Gambar yang Dapat Digeser', use_container_width=True, key='movable-image')
-
+    image_urls = [
+        "https://www.bing.com/images/search?view=detailV2&ccid=S9PPN5Fe&id=CF87CDD9CFB4ECE86FD02DAE029F2027072DA24F&thid=OIP.S9PPN5Fe4mjN26-qHmnIMQHaEK&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.4bd3cf37915ee268cddbafaa1e69c831%3frik%3dT6ItBycgnwKuLQ%26riu%3dhttp%253a%252f%252fwww.rentacarbestprice.com%252fwp-content%252fuploads%252f2016%252f09%252fimage-26.jpeg%26ehk%3d93xpzvZl9v%252bkpSGTVRNsS7STc7o3mBDHNRD4RpBbUNQ%253d%26risl%3d%26pid%3dImgRaw%26r%3d0",
+        "https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg"
+    ]
+    
+    for image_url in image_urls:
+        st.image(image_url, caption='Warning! Database hanya diakses oleh karyawan/staff hotel', use_container_width=True)
+        time.sleep(2)  # Waktu tampilan per gambar (dalam detik)
 
     st.subheader("Anggota Kelompok :")
     st.markdown("- Melynda Isaura (2043221015)")
