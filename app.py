@@ -183,24 +183,24 @@ def visualisasi_data():
         data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0").set_index('id')
         st.dataframe(data)
 
-        st.markdown("Visualisasi Gender yang Sering Reservasi Awal")
+        st.subheader("Visualisasi Gender yang Sering Reservasi Awal")
         gender_counts = data['gender'].value_counts()
         fig, ax = plt.subplots()
         ax.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=90)
         ax.axis('equal')
         st.pyplot(fig)
 
-        st.markdown("Visualisasi Kamar yang Sering Digunakan")
+        st.subheader("Visualisasi Kamar yang Sering Digunakan")
         fig, ax = plt.subplots()
         sns.countplot(x='series_room', data=data, ax=ax)
         st.pyplot(fig)
 
-        st.markdown("Visualisasi Kebutuhan Lainnya")
+        st.subheader("Visualisasi Kebutuhan Lainnya")
         fig, ax = plt.subplots()
         sns.countplot(x='other_needs', data=data, ax=ax)
         st.pyplot(fig)
 
-        st.markdown("Visualisasi Metode Pembayaran Konsumen")
+        st.subheader("Visualisasi Metode Pembayaran Konsumen")
         fig, ax = plt.subplots()
         sns.countplot(x='payment', data=data, ax=ax)
         st.pyplot(fig)
