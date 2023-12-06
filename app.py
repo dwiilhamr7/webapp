@@ -201,6 +201,14 @@ def visualisasi_data():
         sns.countplot(x='pembayaran', data=data, ax=ax)
         st.pyplot(fig)
 
+        fig, ax = plt.subplots()
+        sns.countplot(x='jumlah_makanan', data=data, ax=ax)
+        st.pyplot(fig)
+
+        fig, ax = plt.subplots()
+        sns.countplot(x='jumlah_minuman', data=data, ax=ax)
+        st.pyplot(fig)
+
 if st.sidebar.checkbox("Room Hotel"):
     room_hotel()
 elif st.sidebar.checkbox("Restaurant Hotel"):
