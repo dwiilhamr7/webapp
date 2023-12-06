@@ -178,7 +178,7 @@ def visualisasi_data():
     page_visul = st.sidebar.selectbox("Visualisasi", ["Data Hotel","Data Restaurant"])
 
     if page_visul == "Data Hotel":
-        data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0").set_index('id')
+        data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0").set_index('id')
         st.dataframe(data)
 
         fig, ax = plt.subplots()
