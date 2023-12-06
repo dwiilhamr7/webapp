@@ -33,7 +33,7 @@ def home():
 def room_hotel():
     
     st.header('Diamond Luxury Tower Hotel')
-    page_awal = st.sidebar.selectbox("Room Hotel", ["Database Hotel","Additing Database"])
+    page_awal = st.sidebar.selectbox("Room Hotel", ["Database Hotel","Adding Database"])
 
     with conn.session as session:
         query = text('CREATE TABLE IF NOT EXISTS hotel_room (id serial, nama text, gender char(25), contact text, series_hotel_room text, other_needs text, \
@@ -45,7 +45,7 @@ def room_hotel():
         data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0").set_index('id')
         st.dataframe(data)
 
-    if page_awal == "Additing Database":
+    if page_awal == "Adding Database":
         if st.button('Tambah Data'):
             with conn.session as session:
                 query = text('INSERT INTO hotel_room (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) \
@@ -106,7 +106,7 @@ def room_hotel():
 def restaurant_hotel():
     
     st.header('Diamond Luxury Tower Hotel')
-    page_akhir = st.sidebar.selectbox("Restaurant Hotel", ["Database Restaurant","Additing Pelanggan"])
+    page_akhir = st.sidebar.selectbox("Restaurant Hotel", ["Database Restaurant","Adding Pelanggan"])
 
     with conn.session as session:
         query = text('CREATE TABLE IF NOT EXISTS hotel_restaurant (id serial, pelanggan text, makanan text, jumlah_makanan text, minuman text, \
@@ -117,8 +117,8 @@ def restaurant_hotel():
         data = conn.query('SELECT * FROM hotel_restaurant ORDER By id;', ttl="0").set_index('id')
         st.dataframe(data)
 
-    if page_akhir == "Additing Pelanggan":
-        if st.button('Additing'):
+    if page_akhir == "Adding Pelanggan":
+        if st.button('Adding'):
             with conn.session as session:
                     query_restaurant = text('INSERT INTO hotel_restaurant ("pelanggan", "makanan", "jumlah_makanan", "minuman", "jumlah_minuman", "metode", "no_tempat", "total_harga", "pembayaran") \
                             VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9);')
