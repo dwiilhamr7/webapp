@@ -174,6 +174,13 @@ def restaurant_hotel():
                             session.commit()
                             st.experimental_rerun()
    
+def plot_histogram(data, column, chart_title, x_label, y_label):
+    # Visualisasi histogram
+    fig, ax = plt.subplots()
+    ax.hist(data[column], bins=20, edgecolor='black')  # Sesuaikan jumlah bins sesuai kebutuhan
+    ax.set(xlabel=x_label, ylabel=y_label, title=chart_title)
+    st.pyplot(fig)
+
 def visualisasi_data():
     st.header('Visualisasi Database Diamond Luxury Tower Hotel')
     page_visul = st.sidebar.selectbox("Visualisasi", ["Data Hotel","Data Restaurant"])
@@ -221,6 +228,10 @@ def visualisasi_data():
         fig, ax = plt.subplots()
         sns.countplot(x='jumlah_minuman', data=data, ax=ax)
         st.pyplot(fig)
+
+        plot_histogram(data, 'jumlah_makanan', 'Histogram Jumlah Makanan', 'Jumlah Makanan', 'Frekuensi')
+        plot_histogram(data, 'jumlah_minuman', 'Histogram Jumlah Minuman', 'Jumlah Minuman', 'Frekuensi')
+
 
 if st.sidebar.checkbox("Room Hotel"):
     room_hotel()
