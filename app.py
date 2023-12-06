@@ -173,16 +173,6 @@ def restaurant_hotel():
                             session.execute(query, {'1':id})
                             session.commit()
                             st.experimental_rerun()
-   
-def plot_combined_histogram(data, column1, column2, chart_title, x_label, y_label):
-    # Visualisasi histogram
-    fig, ax = plt.subplots()
-    ax.hist(data[column1], bins=20, alpha=0.5, label='Jumlah Makanan', edgecolor='black')
-    ax.hist(data[column2], bins=20, alpha=0.5, label='Jumlah Minuman', edgecolor='black')
-    
-    ax.set(xlabel=x_label, ylabel=y_label, title=chart_title)
-    ax.legend(loc='upper right')  # Menambahkan legenda
-    st.pyplot(fig)
 
 def visualisasi_data():
     st.header('Visualisasi Database Diamond Luxury Tower Hotel')
@@ -224,15 +214,17 @@ def visualisasi_data():
         sns.countplot(x='pembayaran', data=data, ax=ax)
         st.pyplot(fig)
 
-        fig, ax = plt.subplots()
-        sns.countplot(x='jumlah_makanan', data=data, ax=ax)
-        st.pyplot(fig)
+        def plot_combined_histogram(data, column1, column2, chart_title, x_label, y_label):
+            # Visualisasi histogram
+            fig, ax = plt.subplots()
+            ax.hist(data[column1], bins=20, alpha=0.5, label='Jumlah Makanan', edgecolor='black')
+            ax.hist(data[column2], bins=20, alpha=0.5, label='Jumlah Minuman', edgecolor='black')
+            
+            ax.set(xlabel=x_label, ylabel=y_label, title=chart_title)
+            ax.legend(loc='upper right')  # Menambahkan legenda
+            st.pyplot(fig)
 
-        fig, ax = plt.subplots()
-        sns.countplot(x='jumlah_minuman', data=data, ax=ax)
-        st.pyplot(fig)
-
-        plot_combined_histogram(data, 'jumlah_makanan', 'jumlah_minuman', 'Histogram Jumlah Makanan dan Minuman', 'Jumlah', 'Frekuensi')
+            plot_combined_histogram(data, 'jumlah_makanan', 'jumlah_minuman', 'Histogram Jumlah Makanan dan Minuman', 'Jumlah', 'Frekuensi')
 
 if st.sidebar.checkbox("Room Hotel"):
     room_hotel()
