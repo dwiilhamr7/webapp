@@ -38,6 +38,6 @@ CREATE TABLE hotel_restaurant (
 
 INSERT INTO hotel_restaurant (pelanggan, makanan, jumlah_makanan, minuman, jumlah_minuman, metode, no_tempat, total_harga, pembayaran) 
 VALUES
-    ('dr. Nurita', 'Mie Ayam Spesial', '2', 'Air Putih', '4', 'Diantar', 'Kamar 203', '60000', 'Tunai'),
-    ('Aldenia Boo', 'Nasi Goreng Udang, Mie Ayam Bakso', '1', 'Es Jeruk', '3', 'Ditunggu', 'Meja 8', '84000', 'ATM')
+    ('dr. Nurita', '["Mie Ayam Spesial"]', '2', '["Air Putih"]', '4', 'Diantar', 'Kamar 203', '60000', 'Tunai'),
+    ('Aldenia Boo', '["Nasi Goreng Udang, Mie Ayam Bakso"]', '1', '["Es Jeruk"]', '3', 'Ditunggu', 'Meja 8', '84000', 'ATM')
    	;
