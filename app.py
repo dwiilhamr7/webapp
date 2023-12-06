@@ -49,7 +49,7 @@ def room_hotel():
             with conn.session as session:
                 query = text('INSERT INTO hotel_room (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) \
                                 VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11);')
-                session.execute(query, {'1':'', '2':'', '3':'0', '4':'', '5':'', '6':'', '7':None, '8':'', '9':None, '10':'', '11':'0'})
+                session.execute(query, {'1':'', '2':'', '3':'0', '4':'', '5':'', '6':'', '7':'', '8':'', '9':'', '10':'', '11':'0'})
                 session.commit()
 
         data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0")
@@ -74,9 +74,9 @@ def room_hotel():
                     contact_akhir = st.text_input("contact", contact_awal)
                     room_akhir = st.text_input("series_room", room_awal)
                     other_akhir = st.text_input("other_needs", other_awal)
-                    checkin_akhir = st.date_input("check_in", checkin_awal) if checkin_awal else None
+                    checkin_akhir = st.date_input("check_in", checkin_awal)
                     timeci_akhir = st.time_input("time_ci", timeci_awal)
-                    checkout_akhir = st.date_input("check_out", checkout_awal) if checkin_awal else None
+                    checkout_akhir = st.date_input("check_out", checkout_awal)
                     timeco_akhir = st.time_input("time_co", timeco_awal)
                     payment_akhir = st.selectbox("payment", list_payment, list_payment.index(payment_awal))
                     price_akhir = st.text_input("price", price_awal)
