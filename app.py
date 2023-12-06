@@ -156,7 +156,7 @@ def restaurant_hotel():
                         if st.form_submit_button('UPDATE'):
                             with conn.session as session:
                                 query = text('UPDATE hotel_restaurant \
-                                            SET pelanggan=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5 \
+                                            SET pelanggan=:1, makanan=:2, jumlah_makanan=:3, minuman=:4, jumlah_minuman=:5, \
                                             metode=:6, no_tempat=:7, total_harga=:8, pembayaran=:9, \
                                             WHERE id=:10;')
                                 session.execute(query, {'1':pelanggan_akhir, '2':makanan_akhir, '3':jumlah_makanan_akhir, '4':minuman_akhir, '5':jumlah_minuman_akhir, 
