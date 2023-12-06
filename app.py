@@ -184,10 +184,10 @@ def visualisasi_data():
 
 
 if st.sidebar.checkbox("Room Hotel"):
-        room_hotel()
-if st.sidebar.checkbox("Restaurant Hotel"):
-        restaurant_hotel()
-if st.sidebar.checkbox("Visualisasi"):
-        visualisasi_data()
+    room_hotel()
+elif st.sidebar.checkbox("Restaurant Hotel"):
+    restaurant_hotel()
+elif st.sidebar.checkbox("Visualisasi"):
+    visualisasi_data()
 else:
     home()
