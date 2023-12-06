@@ -37,9 +37,8 @@ def room_hotel():
 
     with conn.session as session:
         query = text('CREATE TABLE IF NOT EXISTS hotel_room (id serial, nama text, gender char(25), contact text, series_hotel_room text, other_needs text, \
-                                                        check_in date, time_ci text, check_out date, time_co text, payment text, price text);')
+                                                            check_in date, time_ci text, check_out date, time_co text, payment text, price text);')
         session.execute(query)
-
 
     if page_awal == "Database Hotel":
         data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0").set_index('id')
@@ -50,7 +49,7 @@ def room_hotel():
             with conn.session as session:
                 query = text('INSERT INTO hotel_room (nama, gender, contact, series_room, other_needs, check_in, time_ci, check_out, time_co, payment, price) \
                                 VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11);')
-                session.execute(query, {'1':'', '2':'', '3':0, '4':'', '5':'', '6':'', '7':'', '8':'', '9':'', '10':'', '11':0})
+                session.execute(query, {'1':'', '2':'', '3':'0', '4':'', '5':'', '6':'', '7':None, '8':'', '9':None, '10':'', '11':'0'})
                 session.commit()
 
         data = conn.query('SELECT * FROM hotel_room ORDER By id;', ttl="0")
@@ -88,7 +87,7 @@ def room_hotel():
                         if st.form_submit_button('UPDATE'):
                             with conn.session as session:
                                 query = text('UPDATE hotel_room \
-                                            SET nama=:1, gender=:2, contact=:3, series_room=:4, other_needs=:5 \
+                                            SET nama=:1, gender=:2, contact=:3, series_room=:4, other_needs=:5, \
                                             check_in=:6, time_ci=:7, check_out=:8, time_co=:9, payment=:10, price=:11 \
                                             WHERE id=:12;')
                                 session.execute(query, {'1':nama_akhir, '2':gender_akhir, '3':contact_akhir, '4':room_akhir, '5':other_akhir,'6':checkin_akhir, 
