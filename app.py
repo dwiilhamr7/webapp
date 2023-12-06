@@ -21,29 +21,45 @@ def home():
     st.header('DATABASE INTERNAL STAFF')
 
     st.markdown("""
-    <div id="slideshow" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg" style="width:100%;">
-            </div>
-            <div class="carousel-item">
-                <img src="https://th.bing.com/th/id/R.4bd3cf37915ee268cddbafaa1e69c831?rik=T6ItBycgnwKuLQ&riu=http%3a%2f%2fwww.rentacarbestprice.com%2fwp-content%2fuploads%2f2016%2f09%2fimage-26.jpeg&ehk=93xpzvZl9v%2bkpSGTVRNsS7STc7o3mBDHNRD4RpBbUNQ%3d&risl=&pid=ImgRaw&r=0" style="width:100%;">
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#slideshow" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#slideshow" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <style>
+        #movable-image-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        #movable-image {
+            width: 100%;
+            position: absolute;
+            transition: transform 0.5s ease-in-out;
+        }
+    </style>
+    
+    <div id="movable-image-container">
+        <img id="movable-image" src="https://www.theluxevoyager.com/wp-content/uploads/2018/02/Four-Seasons-Hotel-Jakarta-pool.jpg">
     </div>
+
     <script>
-        $(document).ready(function(){
-            $('.carousel').carousel();
-        });
+        let currentPosition = 0;
+
+        function moveImage(direction) {
+            const image = document.getElementById('movable-image');
+            const container = document.getElementById('movable-image-container');
+            const containerWidth = container.clientWidth;
+            const imageWidth = image.clientWidth;
+
+            if (direction === 'left' && currentPosition < 0) {
+                currentPosition += containerWidth;
+            } else if (direction === 'right' && currentPosition > -((imageWidth - containerWidth))) {
+                currentPosition -= containerWidth;
+            }
+
+            image.style.transform = `translateX(${currentPosition}px)`;
+        }
     </script>
+
+    <button onclick="moveImage('left')">Move Left</button>
+    <button onclick="moveImage('right')">Move Right</button>
     """, unsafe_allow_html=True)
 
     st.subheader("Anggota Kelompok :")
